@@ -3,7 +3,146 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Darija Bil-3arabiya – Marokkanisches Arabisch lernen</title>
+  <title>Darija Bil-3arabiya</title>
+
+  <!-- iOS Safari & PWA Meta-Tags für Vollbild-App & Home-Bildschirm-Icon -->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Darija" />
+  <meta name="theme-color" content="#1B5E54" />
+  <link rel="apple-touch-icon" id="apple-touch-icon" href="" />
+  <link rel="icon" id="app-favicon" type="image/png" href="" />
+  <link rel="manifest" id="app-manifest" href="" />
+
+  <!-- Synchroner App-Icon-Generator (512x512 PNG via HTML5-Canvas für iOS Safari & Manifest) -->
+  <script>
+    (function generateMoroccanAppIcon() {
+      try {
+        const size = 512;
+        const canvas = document.createElement('canvas');
+        canvas.width = size;
+        canvas.height = size;
+        const ctx = canvas.getContext('2d');
+
+        // 1. Vollflächiger Farbverlauf (Terrakotta #C2593F -> Smaragdgrün #1B5E54)
+        // Vollflächig gezeichnet, damit iOS beim automatischen Abrunden keine schwarzen Ecken erzeugt
+        const bgGrad = ctx.createLinearGradient(0, 0, size, size);
+        bgGrad.addColorStop(0, '#C2593F');
+        bgGrad.addColorStop(0.52, '#6E5C4A');
+        bgGrad.addColorStop(1, '#1B5E54');
+        ctx.fillStyle = bgGrad;
+        ctx.fillRect(0, 0, size, size);
+
+        // Sanfter Lichtschein in der Mitte
+        const radialGlow = ctx.createRadialGradient(256, 235, 20, 256, 235, 260);
+        radialGlow.addColorStop(0, 'rgba(255, 255, 255, 0.14)');
+        radialGlow.addColorStop(1, 'rgba(255, 255, 255, 0)');
+        ctx.fillStyle = radialGlow;
+        ctx.fillRect(0, 0, size, size);
+
+        // Hilfsfunktion für abgerundeten Rahmen
+        function drawRoundedRect(x, y, w, h, r) {
+          ctx.beginPath();
+          ctx.moveTo(x + r, y);
+          ctx.lineTo(x + w - r, y);
+          ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+          ctx.lineTo(x + w, y + h - r);
+          ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+          ctx.lineTo(x + r, y + h);
+          ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+          ctx.lineTo(x, y + r);
+          ctx.quadraticCurveTo(x, y, x + r, y);
+          ctx.closePath();
+        }
+
+        // 2. Edler goldener Zellige-Doppelrahmen (#E6B85C)
+        drawRoundedRect(26, 26, size - 52, size - 52, 86);
+        ctx.strokeStyle = 'rgba(230, 184, 92, 0.55)';
+        ctx.lineWidth = 5;
+        ctx.stroke();
+
+        drawRoundedRect(40, 40, size - 80, size - 80, 74);
+        ctx.strokeStyle = 'rgba(230, 184, 92, 0.25)';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        // 3. Dezenter 8-zackiger marokkanischer Zellige-Stern im Hintergrund
+        ctx.save();
+        ctx.translate(256, 224);
+        for (let i = 0; i < 2; i++) {
+          ctx.save();
+          ctx.rotate((i * Math.PI) / 4);
+          ctx.fillStyle = 'rgba(230, 184, 92, 0.09)';
+          ctx.strokeStyle = 'rgba(230, 184, 92, 0.42)';
+          ctx.lineWidth = 3.5;
+          ctx.fillRect(-108, -108, 216, 216);
+          ctx.strokeRect(-108, -108, 216, 216);
+          ctx.restore();
+        }
+        ctx.restore();
+
+        // 4. Arabische Kalligrafie „الدارجة“ in Weiß
+        ctx.save();
+        ctx.fillStyle = '#FFFFFF';
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.28)';
+        ctx.shadowBlur = 12;
+        ctx.shadowOffsetY = 4;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.font = '700 94px "Noto Sans Arabic", "Geeza Pro", "Tahoma", sans-serif';
+        ctx.fillText('الدارجة', 256, 232);
+        ctx.restore();
+
+        // 5. Goldene Trennlinie & Schriftzug „DARIJA“ darunter
+        ctx.strokeStyle = '#E6B85C';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(166, 332);
+        ctx.lineTo(346, 332);
+        ctx.stroke();
+
+        ctx.fillStyle = '#E6B85C';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.font = '800 34px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif';
+        ctx.fillText('D A R I J A', 256, 376);
+
+        // 6. Als PNG-Data-URL speichern & direkt zuweisen
+        const pngDataUrl = canvas.toDataURL('image/png');
+        window.__APP_ICON_DATA_URL__ = pngDataUrl;
+
+        const appleIconEl = document.getElementById('apple-touch-icon');
+        const faviconEl = document.getElementById('app-favicon');
+        const manifestEl = document.getElementById('app-manifest');
+
+        if (appleIconEl) appleIconEl.href = pngDataUrl;
+        if (faviconEl) faviconEl.href = pngDataUrl;
+
+        if (manifestEl) {
+          const manifestData = {
+            name: 'Darija Bil-3arabiya',
+            short_name: 'Darija',
+            start_url: '.',
+            display: 'standalone',
+            background_color: '#FAF6F0',
+            theme_color: '#1B5E54',
+            icons: [
+              {
+                src: pngDataUrl,
+                sizes: '512x512',
+                type: 'image/png',
+                purpose: 'any maskable'
+              }
+            ]
+          };
+          manifestEl.href = 'data:application/manifest+json;charset=utf-8,' + encodeURIComponent(JSON.stringify(manifestData));
+        }
+      } catch (err) {
+        console.warn('App-Icon konnte nicht generiert werden:', err);
+      }
+    })();
+  </script>
+
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Google Fonts: Plus Jakarta Sans, Inter & Noto Sans Arabic -->
@@ -17,32 +156,32 @@
         extend: {
           colors: {
             sand: {
-              50: '#FAF7F2',
-              100: '#F3EDE2',
+              50: '#FAF6F0',
+              100: '#F3ECE0',
               200: '#E6DCCB',
               300: '#D4C4A8',
             },
             zellige: {
-              50: '#EEF7F7',
-              100: '#D4ECEC',
-              500: '#167A7A',
-              600: '#0F5C5C',
-              700: '#0A4444',
-              800: '#073131',
+              50: '#EDF6F4',
+              100: '#D2E9E5',
+              500: '#247A6D',
+              600: '#1B5E54',
+              700: '#144840',
+              800: '#0E332E',
             },
             terracotta: {
-              50: '#FDF3EF',
-              100: '#FAE2D8',
-              500: '#D96B43',
-              600: '#C85A32',
-              700: '#A64623',
+              50: '#FDF2EF',
+              100: '#FADFD7',
+              500: '#D46B50',
+              600: '#C2593F',
+              700: '#9E432C',
             },
             saffron: {
               50: '#FEF9EC',
               100: '#FDEFC8',
-              400: '#E8B038',
-              500: '#D99B26',
-              600: '#B87E14',
+              400: '#E6B85C',
+              500: '#D4A349',
+              600: '#B08028',
             }
           },
           fontFamily: {
@@ -57,42 +196,11 @@
 
   <style>
     body {
-      background-color: #FAF7F2;
+      background-color: #FAF6F0;
       color: #1E293B;
       -webkit-tap-highlight-color: transparent;
     }
-
-    .arabic-text {
-      font-family: 'Noto Sans Arabic', Tahoma, sans-serif;
-      direction: rtl;
-      unicode-bidi: isolate;
-      line-height: 1.75;
-    }
-
-    /* Subtle Moroccan Zellige geometric pattern overlay */
-    .zellige-pattern {
-      background-image: radial-gradient(circle at 2px 2px, rgba(255, 255, 255, 0.12) 1.5px, transparent 0);
-      background-size: 20px 20px;
-    }
-
-    @keyframes pulseRing {
-      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(200, 90, 50, 0.55); }
-      70% { transform: scale(1); box-shadow: 0 0 0 14px rgba(200, 90, 50, 0); }
-      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(200, 90, 50, 0); }
-    }
-
-    .mic-recording {
-      animation: pulseRing 1.5s infinite;
-    }
-
-    @keyframes fadeSlideUp {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .animate-step {
-      animation: fadeSlideUp 0.28s ease-out forwards;
-    }
+    /* ... existing code ... -->
   </style>
 </head>
 <body class="min-h-screen flex flex-col antialiased selection:bg-zellige-100 selection:text-zellige-800">
@@ -103,15 +211,9 @@
   <!-- Top Navigation Header -->
   <header class="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-sand-200 shadow-xs">
     <div class="max-w-5xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
-      <!-- Brand / Logo -->
-      <button onclick="goHome()" class="flex items-center gap-3 text-left group focus:outline-none">
-        <div class="w-10 h-10 rounded-xl bg-zellige-600 text-white flex items-center justify-center shadow-sm group-hover:bg-zellige-700 transition-colors shrink-0">
-          <!-- Moroccan 8-point star SVG -->
-          <svg class="w-6 h-6 text-saffron-400" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 1L14.8 6.2L20.5 5.5L19.8 11.2L23 14L19.8 16.8L20.5 22.5L14.8 21.8L12 23L9.2 21.8L3.5 22.5L4.2 16.8L1 14L4.2 11.2L3.5 5.5L9.2 6.2L12 1Z" opacity="0.25"/>
-            <path d="M12 2.5L14.3 7.7L19.5 7.7L16.3 12L19.5 16.3L14.3 16.3L12 21.5L9.7 16.3L4.5 16.3L7.7 12L4.5 7.7L9.7 7.7L12 2.5Z"/>
-          </svg>
-        </div>
+      <!-- Brand / Logo mit integriertem App-Icon -->
+      <button onclick="goHome()" class="flex items-center gap-3 text-left group focus:outline-none cursor-pointer">
+        <img id="header-app-icon" alt="Darija Icon" class="w-10 h-10 rounded-xl shadow-sm object-cover shrink-0 border border-sand-200" />
         <div>
           <div class="flex items-center gap-2">
             <span class="font-display font-extrabold text-lg text-zellige-700 tracking-tight">Darija Bil-3arabiya</span>
@@ -123,13 +225,15 @@
 
       <!-- Stats & Controls -->
       <div class="flex items-center flex-wrap gap-2 sm:gap-3">
-        <!-- Stats Pills -->
+        <!-- Stats Pills: Tages-Streak, Gesamtfortschritt & Gelernte Wörter -->
         <div class="flex items-center gap-1.5 bg-sand-50 border border-sand-200 px-2.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold">
           <span title="Tages-Streak">🔥 <span id="stat-streak">0</span></span>
           <span class="text-sand-300">|</span>
-          <span title="Gelernte Ausdrücke">📚 <span id="stat-phrases">0</span></span>
+          <span title="Gesamtfortschritt" class="text-zellige-700">🎯 <span id="stat-progress">0%</span></span>
           <span class="text-sand-300">|</span>
-          <span title="Lernpunkte (XP)" class="text-saffron-600">⭐ <span id="stat-xp">0</span></span>
+          <span title="Gelernte Ausdrücke">📚 <span id="stat-phrases">0</span></span>
+          <span class="hidden md:inline text-sand-300">|</span>
+          <span title="Lernpunkte (XP)" class="hidden md:inline text-saffron-600">⭐ <span id="stat-xp">0</span></span>
         </div>
 
         <!-- Global Transliteration Toggle -->
@@ -140,12 +244,12 @@
           <span>Lautschrift: <strong id="translit-label">AN</strong></span>
         </button>
 
-        <!-- Extend / Backup Button -->
+        <!-- Extend & Backup Button -->
         <button onclick="openExtendModal()"
           class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs sm:text-sm font-semibold bg-zellige-50 text-zellige-700 hover:bg-zellige-100 border border-zellige-200 transition-colors cursor-pointer"
           title="Neue Kapitel importieren oder Fortschritt sichern">
           <span>➕</span>
-          <span class="hidden md:inline">Kapitel erweitern</span>
+          <span>Kapitel &amp; Backup</span>
         </button>
       </div>
     </div>
@@ -192,6 +296,13 @@
             title: "Herzliche Begrüßung & Befinden",
             duration: "5 Min.",
             phrases: [
+              {
+                id: "p1_0",
+                ar: "السلام عليكم",
+                tr: "Salam 3alaykum",
+                de: "Friede sei mit euch (Herzliche Begrüßung)",
+                note: "Die traditionelle und respektvolle Begrüßung in Marokko – besonders bei älteren Familienmitgliedern. Die Antwort lautet: 'Wa 3alaykum s-salam'."
+              },
               {
                 id: "p1_1",
                 ar: "كيداير؟ / كيدايرا؟",
@@ -289,6 +400,13 @@
             title: "Meine Familie & Verwandte",
             duration: "6 Min.",
             phrases: [
+              {
+                id: "p1_5b",
+                ar: "ماما / بابا",
+                tr: "Mama / Baba",
+                de: "Mama / Papa",
+                note: "Auch in marokkanischen Familien sind 'Mama' und 'Baba' die liebevollen Standardwörter für Mutter und Vater."
+              },
               {
                 id: "p1_6",
                 ar: "خويا / ختي",
@@ -676,10 +794,10 @@
               },
               {
                 id: "p2_8",
-                ar: "شبعت، الحمد لله",
-                tr: "Chbe3t, l7amdulillah",
-                de: "Ich bin satt, Gott sei Dank",
-                note: "Wichtiges Überlebenswort bei marokkanischen Familienessen, da Gastgeber immer noch Nachschlag auflegen!"
+                ar: "شبعت، الحمد لله / الله يخلف",
+                tr: "Chbe3t, l7amdulillah / Allah ykhlef",
+                de: "Ich bin satt, Gott sei Dank / Vergelt's Gott",
+                note: "Wichtiges Überlebenswort bei marokkanischen Familienessen! 'Allah ykhlef' sagt man zusätzlich als Dank an die Gastgeber, dass Gott es ihnen reichlich ersetzen möge."
               },
               {
                 id: "p2_9",
@@ -1739,10 +1857,10 @@
             phrases: [
               {
                 id: "p5_9",
-                ar: "عافاك عاوني / عاونيني",
-                tr: "3afak 3awenni (m) / 3awnini (w)",
-                de: "Bitte hilf mir",
-                note: "Wird auch oft geschrieben/gesprochen als '3awenni' (an einen Mann) / '3awnini' (an eine Frau)."
+                ar: "عافاك عاوني / واش نقدر نعاونك؟",
+                tr: "3afak 3awenni / Wash ne9der n3awnek?",
+                de: "Bitte hilf mir / Kann ich dir helfen?",
+                note: "'3awenni' = hilf mir (an eine Frau: '3awnini'). Mit 'Wash ne9der n3awnek?' bietest du selbst freundlich deine Hilfe in der Küche oder im Alltag an!"
               },
               {
                 id: "p5_10",
@@ -2138,9 +2256,49 @@
         displayStreak = 0;
       }
 
+      const chapters = getAllChapters();
+      const totalLessons = chapters.reduce((acc, ch) => acc + ch.lessons.length, 0);
+      const completedCount = (appState.completedLessons || []).length;
+      const overallPct = totalLessons > 0 ? Math.round((completedCount / totalLessons) * 100) : 0;
+
       document.getElementById('stat-streak').textContent = displayStreak;
+      const progressEl = document.getElementById('stat-progress');
+      if (progressEl) progressEl.textContent = `${overallPct}%`;
       document.getElementById('stat-phrases').textContent = (appState.masteredPhrases || []).length;
       document.getElementById('stat-xp').textContent = appState.xp || 0;
+    }
+
+    function toggleMasteredPhrase(phraseId) {
+      if (!appState.masteredPhrases) appState.masteredPhrases = [];
+      const idx = appState.masteredPhrases.indexOf(phraseId);
+      let isNowMastered = false;
+      if (idx === -1) {
+        appState.masteredPhrases.push(phraseId);
+        isNowMastered = true;
+      } else {
+        appState.masteredPhrases.splice(idx, 1);
+      }
+      saveState();
+
+      // Update Intro Card button if visible
+      const cardBtn = document.getElementById(`master-btn-${phraseId}`);
+      if (cardBtn) {
+        cardBtn.className = isNowMastered
+          ? 'px-4 py-2.5 rounded-xl bg-zellige-50 text-zellige-700 border border-zellige-300 text-sm font-semibold flex items-center gap-1.5 cursor-pointer transition-colors'
+          : 'px-4 py-2.5 rounded-xl bg-white hover:bg-sand-100 text-slate-600 border border-sand-200 text-sm font-semibold flex items-center gap-1.5 cursor-pointer transition-colors';
+        cardBtn.innerHTML = isNowMastered ? '<span>✅</span><span>Gelernt</span>' : '<span>☆</span><span>Als gelernt</span>';
+      }
+
+      // Update Summary Modal button if visible
+      const sumBtn = document.getElementById(`sum-master-btn-${phraseId}`);
+      if (sumBtn) {
+        sumBtn.className = isNowMastered
+          ? 'w-10 h-10 rounded-xl bg-zellige-600 text-white flex items-center justify-center shrink-0 cursor-pointer text-sm font-bold'
+          : 'w-10 h-10 rounded-xl bg-sand-100 hover:bg-sand-200 text-slate-500 flex items-center justify-center shrink-0 cursor-pointer text-sm';
+        sumBtn.textContent = isNowMastered ? '✓' : '☆';
+      }
+
+      showToast(isNowMastered ? 'Als gelernt markiert!' : 'Markierung entfernt.', 'info');
     }
 
     /**
@@ -2580,6 +2738,7 @@
     // --- 7.1 LERNKARTE (INTRO) ---
     function renderIntroCard(step) {
       const p = step.phrase;
+      const isMastered = (appState.masteredPhrases || []).includes(p.id);
       return `
         <div class="text-center">
           <span class="inline-block text-xs font-bold uppercase tracking-wider bg-zellige-50 text-zellige-700 border border-zellige-200 px-3 py-1 rounded-full mb-5">
@@ -2597,8 +2756,8 @@
             „${p.de}“
           </p>
 
-          <!-- Audio Buttons -->
-          <div class="flex items-center justify-center gap-3 mb-6">
+          <!-- Audio & Als gelernt markieren Buttons -->
+          <div class="flex flex-wrap items-center justify-center gap-2.5 mb-6">
             <button type="button" onclick="speakDarija('${escapeQuotes(p.ar)}', 0.92)"
               class="px-4 py-2.5 rounded-xl bg-zellige-600 hover:bg-zellige-700 text-white text-sm font-semibold flex items-center gap-2 shadow-xs cursor-pointer">
               <span>🔊</span><span>Anhören</span>
@@ -2606,6 +2765,12 @@
             <button type="button" onclick="speakDarija('${escapeQuotes(p.ar)}', 0.62)"
               class="px-4 py-2.5 rounded-xl bg-sand-100 hover:bg-sand-200 text-slate-700 text-sm font-semibold flex items-center gap-2 cursor-pointer">
               <span>🐢</span><span>Langsam</span>
+            </button>
+            <button type="button" id="master-btn-${p.id}" onclick="toggleMasteredPhrase('${p.id}')"
+              class="${isMastered
+                ? 'px-4 py-2.5 rounded-xl bg-zellige-50 text-zellige-700 border border-zellige-300 text-sm font-semibold flex items-center gap-1.5 cursor-pointer transition-colors'
+                : 'px-4 py-2.5 rounded-xl bg-white hover:bg-sand-100 text-slate-600 border border-sand-200 text-sm font-semibold flex items-center gap-1.5 cursor-pointer transition-colors'}">
+              <span>${isMastered ? '✅' : '☆'}</span><span>${isMastered ? 'Gelernt' : 'Als gelernt'}</span>
             </button>
           </div>
 
@@ -3252,19 +3417,31 @@
         <div>
           <h3 class="font-display text-sm font-bold uppercase tracking-wider text-zellige-700 mb-3">📚 Wichtigste Ausdrücke (${allPhrases.length})</h3>
           <div class="divide-y divide-sand-200 border border-sand-200 rounded-2xl overflow-hidden">
-            ${allPhrases.map(p => `
-              <div class="p-3.5 sm:p-4 bg-white hover:bg-sand-50/70 flex items-center justify-between gap-3">
-                <div class="flex-1">
-                  <p class="arabic-text text-lg sm:text-xl font-bold text-slate-900">${p.ar}</p>
-                  ${appState.showTransliteration ? `<p class="text-xs text-terracotta-600 font-semibold">${p.tr}</p>` : ''}
-                  <p class="text-sm text-slate-700 mt-0.5">${p.de}</p>
+            ${allPhrases.map(p => {
+              const isMastered = (appState.masteredPhrases || []).includes(p.id);
+              return `
+                <div class="p-3.5 sm:p-4 bg-white hover:bg-sand-50/70 flex items-center justify-between gap-3">
+                  <div class="flex-1">
+                    <p class="arabic-text text-lg sm:text-xl font-bold text-slate-900">${p.ar}</p>
+                    ${appState.showTransliteration ? `<p class="text-xs text-terracotta-600 font-semibold">${p.tr}</p>` : ''}
+                    <p class="text-sm text-slate-700 mt-0.5">${p.de}</p>
+                  </div>
+                  <div class="flex items-center gap-2 shrink-0">
+                    <button type="button" id="sum-master-btn-${p.id}" onclick="toggleMasteredPhrase('${p.id}')"
+                      class="${isMastered
+                        ? 'w-10 h-10 rounded-xl bg-zellige-600 text-white flex items-center justify-center shrink-0 cursor-pointer text-sm font-bold'
+                        : 'w-10 h-10 rounded-xl bg-sand-100 hover:bg-sand-200 text-slate-500 flex items-center justify-center shrink-0 cursor-pointer text-sm'}"
+                      title="Als gelernt markieren">
+                      ${isMastered ? '✓' : '☆'}
+                    </button>
+                    <button type="button" onclick="speakDarija('${escapeQuotes(p.ar)}', 0.9)"
+                      class="w-10 h-10 rounded-xl bg-zellige-50 hover:bg-zellige-100 text-zellige-700 flex items-center justify-center shrink-0 cursor-pointer" title="Anhören">
+                      🔊
+                    </button>
+                  </div>
                 </div>
-                <button type="button" onclick="speakDarija('${escapeQuotes(p.ar)}', 0.9)"
-                  class="w-10 h-10 rounded-xl bg-zellige-50 hover:bg-zellige-100 text-zellige-700 flex items-center justify-center shrink-0 cursor-pointer" title="Anhören">
-                  🔊
-                </button>
-              </div>
-            `).join('')}
+              `;
+            }).join('')}
           </div>
         </div>
 
@@ -3276,36 +3453,51 @@
     }
 
     function openExtendModal() {
+      const nextNum = getAllChapters().length + 1;
       const sampleTemplate = JSON.stringify([
         {
-          id: "kapitel-6",
-          number: getAllChapters().length + 1,
-          title: "Im Café & Restaurant",
-          subtitle: "Kaffee, Tajine & Couscous bestellen und die Rechnung verlangen",
-          icon: "☕",
+          id: `kapitel-${nextNum}`,
+          number: nextNum,
+          title: "Gesundheit & Notfälle im Urlaub",
+          subtitle: "Apotheke, Arztbesuch, Beschwerden beschreiben und schnell Hilfe rufen",
+          icon: "🏥",
           lessons: [
             {
-              id: "k6-l1",
-              title: "Kaffee & Getränke bestellen",
+              id: `k${nextNum}-l1`,
+              title: "In der Apotheke & beim Arzt",
               duration: "5 Min.",
               phrases: [
                 {
-                  id: "p6_1",
-                  ar: "عافاك بغيت قهوة نص نص",
-                  tr: "3afak bghit 9ehwa ness-ness",
-                  de: "Ich möchte bitte einen Milchkaffee (halb Kaffee, halb Milch)",
-                  note: "'9ehwa ness-ness' ist der absolute Klassiker in marokkanischen Cafés!"
+                  id: `p${nextNum}_1`,
+                  ar: "فين كاينة الفرماسيان، عافاك؟",
+                  tr: "Fin kayna l-farmasiyan, 3afak?",
+                  de: "Wo ist bitte die Apotheke?",
+                  note: "'L-farmasiyan' (oder 's-saydaliya') versteht in Marokko jeder sofort. Apotheken sind durch ein grünes Kreuz gekennzeichnet."
+                },
+                {
+                  id: `p${nextNum}_2`,
+                  ar: "كرشي كتضرني / راسي كيضرني",
+                  tr: "Kershi katḍerni / Rasi kayḍerni",
+                  de: "Ich habe Bauchschmerzen / Ich habe Kopfschmerzen",
+                  note: "'Kershi' = mein Bauch, 'rasi' = mein Kopf, 'kayḍerni / katḍerni' = tut mir weh."
+                },
+                {
+                  id: `p${nextNum}_3`,
+                  ar: "بغيت شي دوا للوجع",
+                  tr: "Bghit shi dwa l-lwje3",
+                  de: "Ich möchte ein Medikament gegen die Schmerzen",
+                  note: "'Dwa' = Medizin / Medikament, 'l-wje3' = der Schmerz."
                 }
               ],
               exercises: [
                 {
                   type: "choice",
-                  prompt: "Wie bestellst du einen typischen marokkanischen Milchkaffee?",
+                  prompt: "Du suchst im Urlaub eine Apotheke. Wie fragst du höflich danach?",
                   options: [
-                    { ar: "بغيت قهوة نص نص", tr: "Bghit 9ehwa ness-ness", correct: true },
+                    { ar: "فين كاينة الفرماسيان، عافاك؟", tr: "Fin kayna l-farmasiyan, 3afak?", correct: true },
                     { ar: "بغيت كاس د أتاي", tr: "Bghit kas d-atay", correct: false }
                   ],
-                  explanation: "'Ness-ness' bedeutet 'halb-halb' (halb Espresso, halb heiße Milch)."
+                  explanation: "'Fin kayna l-farmasiyan, 3afak?' = Wo ist bitte die Apotheke?"
                 }
               ]
             }
@@ -3313,50 +3505,57 @@
           summary: {
             grammarTips: [
               {
-                title: "Kaffee-Kultur in Marokko",
-                text: "<strong>9ehwa ka7la</strong> = schwarzer Kaffee, <strong>9ehwa ness-ness</strong> = Milchkaffee, <strong>9ehwa b-l7lib</strong> = Kaffee mit viel Milch."
+                title: "Schmerzen ausdrücken mit „kayḍerni / katḍerni“",
+                text: "Für männliche Körperteile (z. B. <em>rasi</em> = mein Kopf) sagst du <strong>rasi kayḍerni</strong>, für weibliche (z. B. <em>kershi</em> = mein Bauch) sagst du <strong>kershi katḍerni</strong>."
               }
             ]
           },
           chapterQuiz: [
             {
               type: "choice",
-              prompt: "Was ist eine „9ehwa ness-ness“?",
+              prompt: "Was bedeutet „Rasi kayḍerni“?",
               options: [
-                { ar: "قهوة نص نص", tr: "Milchkaffee (halb Kaffee, halb Milch)", correct: true },
-                { ar: "قهوة نص نص", tr: "Minztee ohne Zucker", correct: false }
+                { ar: "راسي كيضرني", tr: "Ich habe Kopfschmerzen", correct: true },
+                { ar: "راسي كيضرني", tr: "Wo ist das Taxi?", correct: false }
               ],
-              explanation: "'Ness-ness' = halb-halb."
+              explanation: "'Rasi' = mein Kopf, 'kayḍerni' = tut mir weh."
             }
           ]
         }
       ], null, 2);
 
+      const iconSrc = window.__APP_ICON_DATA_URL__ || '';
+
       openModal(`
         <div class="flex items-start justify-between gap-4 mb-4">
           <div>
             <span class="text-xs font-bold uppercase tracking-wider text-zellige-700">Erweitern &amp; Datensicherung</span>
-            <h2 class="font-display text-2xl font-extrabold text-slate-800 mt-0.5">Neue Kapitel hinzufügen</h2>
+            <h2 class="font-display text-2xl font-extrabold text-slate-800 mt-0.5">Kapitel &amp; Backup</h2>
           </div>
           <button onclick="closeModal()" class="w-9 h-9 rounded-xl bg-sand-100 hover:bg-sand-200 flex items-center justify-center font-bold text-slate-600 cursor-pointer">✕</button>
         </div>
 
-        <p class="text-sm text-slate-600 leading-relaxed mb-4">
-          Deine App ist modular aufgebaut: Wenn du mit Kapitel 5 fertig bist, kannst du mir einfach sagen, welche Themen du als Nächstes lernen möchtest. Ich erstelle dir dann neue Kapitel im passenden Format, die du hier mit einem Klick einfügst – <strong>dein bisheriger Lernstand bleibt dabei komplett erhalten!</strong>
-        </p>
+        <!-- Embedded App-Icon Preview -->
+        <div class="bg-sand-50 border border-sand-200 rounded-2xl p-4 mb-5 flex items-center gap-4">
+          <img src="${iconSrc}" alt="App-Icon Vorschau" class="w-16 h-16 rounded-2xl shadow-md shrink-0 border border-sand-300" />
+          <div class="text-xs text-slate-600 leading-relaxed">
+            <p class="font-bold text-sm text-slate-800 mb-0.5">Integriertes iPhone Home-Bildschirm-Icon</p>
+            <p>Dieses marokkanische Icon ist fest in deine <code>index.html</code> eingebettet. Wenn du die Seite auf GitHub Pages öffnest und in Safari <strong>„Zum Home-Bildschirm“</strong> wählst, erscheint es automatisch als App-Symbol.</p>
+          </div>
+        </div>
 
-        <!-- Import JSON Area -->
+        <!-- Import JSON Area for New Chapters -->
         <div class="mb-5">
-          <div class="flex items-center justify-between mb-1.5">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-1.5">
             <label for="chapter-json-input" class="text-xs font-bold uppercase tracking-wider text-slate-700">
-              Kapitel-JSON einfügen:
+              Neue Kapitel per JSON hinzufügen:
             </label>
             <button type="button" onclick="loadSampleIntoTextarea()"
               class="text-xs font-semibold text-zellige-700 hover:underline cursor-pointer">
-              Beispiel-Kapitel 6 zum Testen einfügen
+              ✨ Beispiel-Kapitel 6 („Gesundheit &amp; Notfälle“) einfügen
             </button>
           </div>
-          <textarea id="chapter-json-input" rows="6"
+          <textarea id="chapter-json-input" rows="5"
             placeholder='Füge hier das JSON für neue Kapitel ein (z. B. [ { "id": "kapitel-6", ... } ])'
             class="w-full rounded-2xl border border-sand-300 bg-sand-50 p-3.5 text-xs font-mono text-slate-800 focus:outline-none focus:border-zellige-600"></textarea>
 
@@ -3367,27 +3566,35 @@
             </button>
             <button type="button" onclick="copyTemplateJson()"
               class="px-4 py-2.5 rounded-xl bg-sand-100 hover:bg-sand-200 text-slate-700 text-xs sm:text-sm font-semibold cursor-pointer">
-              📋 JSON-Struktur kopieren
+              📋 Vorlage kopieren
             </button>
           </div>
         </div>
 
-        <!-- Backup & Restore Section -->
+        <!-- Backup & Restore Section (Laptop <-> Handy Transfer) -->
         <div class="pt-5 border-t border-sand-200">
-          <h3 class="font-display text-sm font-bold text-slate-800 mb-2">💾 Lernstand sichern &amp; wiederherstellen</h3>
+          <h3 class="font-display text-sm font-bold text-slate-800 mb-1.5">💾 Lernstand sichern &amp; zwischen Geräten übertragen</h3>
           <p class="text-xs text-slate-500 mb-3">
-            Sichere deinen Fortschritt inklusive eigener Kapitel als Text-Code, falls du das Gerät wechselst.
+            Kopiere deinen Fortschritt auf dem Laptop und füge ihn auf dem Handy wieder ein (oder umgekehrt).
           </p>
-          <div class="flex flex-wrap gap-2">
+          <div class="flex flex-wrap gap-2 mb-3">
             <button type="button" onclick="exportProgressBackup()"
               class="px-4 py-2 rounded-xl bg-saffron-50 hover:bg-saffron-100 text-saffron-600 border border-saffron-200 text-xs font-bold cursor-pointer">
-              📤 Fortschritt kopieren
+              📤 Fortschritt-Code kopieren
             </button>
             ${
               (appState.customChapters && appState.customChapters.length > 0)
-                ? `<button type="button" onclick="removeCustomChapters()" class="px-4 py-2 rounded-xl bg-terracotta-50 hover:bg-terracotta-100 text-terracotta-700 text-xs font-semibold cursor-pointer">🗑️ Importierte Zusatz-Kapitel entfernen (${appState.customChapters.length})</button>`
+                ? `<button type="button" onclick="removeCustomChapters()" class="px-4 py-2 rounded-xl bg-terracotta-50 hover:bg-terracotta-100 text-terracotta-700 text-xs font-semibold cursor-pointer">🗑️ Zusatz-Kapitel entfernen (${appState.customChapters.length})</button>`
                 : ''
             }
+          </div>
+          <div class="flex flex-col sm:flex-row gap-2">
+            <input type="text" id="progress-import-input" placeholder="Fortschritt-Code hier einfügen..."
+              class="flex-1 rounded-xl border border-sand-300 bg-sand-50 px-3 py-2 text-xs font-mono text-slate-800 focus:outline-none focus:border-zellige-600" />
+            <button type="button" onclick="importProgressBackup()"
+              class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold cursor-pointer shrink-0">
+              📥 Fortschritt laden
+            </button>
           </div>
         </div>
 
@@ -3464,6 +3671,31 @@
       copyTextToClipboard(backupJson, 'Dein kompletter Lernstand wurde in die Zwischenablage kopiert!');
     }
 
+    function importProgressBackup() {
+      const inputEl = document.getElementById('progress-import-input');
+      if (!inputEl) return;
+      const raw = inputEl.value.trim();
+      if (!raw) {
+        showToast('Bitte füge zuerst einen kopierten Fortschritt-Code ein.', 'warning');
+        return;
+      }
+      try {
+        const parsed = JSON.parse(raw);
+        if (!parsed || typeof parsed !== 'object' || !Array.isArray(parsed.completedLessons)) {
+          showToast('Ungültiger Fortschritt-Code.', 'warning');
+          return;
+        }
+        appState = { ...defaultState, ...parsed };
+        saveState();
+        updateTranslitButton();
+        closeModal();
+        renderDashboard();
+        showToast('Dein Lernstand wurde erfolgreich wiederhergestellt!', 'success');
+      } catch (err) {
+        showToast('Fehler beim Laden des Codes. Bitte kopiere ihn vollständig.', 'warning');
+      }
+    }
+
     function escapeQuotes(str) {
       return String(str).replace(/'/g, "\\'").replace(/"/g, '&quot;');
     }
@@ -3474,6 +3706,10 @@
      * ============================================================================
      */
     window.addEventListener('DOMContentLoaded', () => {
+      const headerIconEl = document.getElementById('header-app-icon');
+      if (headerIconEl && window.__APP_ICON_DATA_URL__) {
+        headerIconEl.src = window.__APP_ICON_DATA_URL__;
+      }
       initVoices();
       updateHeaderStats();
       updateTranslitButton();
