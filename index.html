@@ -1,0 +1,3484 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Darija Bil-3arabiya – Marokkanisches Arabisch lernen</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Plus Jakarta Sans, Inter & Noto Sans Arabic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            sand: {
+              50: '#FAF7F2',
+              100: '#F3EDE2',
+              200: '#E6DCCB',
+              300: '#D4C4A8',
+            },
+            zellige: {
+              50: '#EEF7F7',
+              100: '#D4ECEC',
+              500: '#167A7A',
+              600: '#0F5C5C',
+              700: '#0A4444',
+              800: '#073131',
+            },
+            terracotta: {
+              50: '#FDF3EF',
+              100: '#FAE2D8',
+              500: '#D96B43',
+              600: '#C85A32',
+              700: '#A64623',
+            },
+            saffron: {
+              50: '#FEF9EC',
+              100: '#FDEFC8',
+              400: '#E8B038',
+              500: '#D99B26',
+              600: '#B87E14',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+            arabic: ['Noto Sans Arabic', 'Tahoma', 'Arial', 'sans-serif'],
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    body {
+      background-color: #FAF7F2;
+      color: #1E293B;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .arabic-text {
+      font-family: 'Noto Sans Arabic', Tahoma, sans-serif;
+      direction: rtl;
+      unicode-bidi: isolate;
+      line-height: 1.75;
+    }
+
+    /* Subtle Moroccan Zellige geometric pattern overlay */
+    .zellige-pattern {
+      background-image: radial-gradient(circle at 2px 2px, rgba(255, 255, 255, 0.12) 1.5px, transparent 0);
+      background-size: 20px 20px;
+    }
+
+    @keyframes pulseRing {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(200, 90, 50, 0.55); }
+      70% { transform: scale(1); box-shadow: 0 0 0 14px rgba(200, 90, 50, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(200, 90, 50, 0); }
+    }
+
+    .mic-recording {
+      animation: pulseRing 1.5s infinite;
+    }
+
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate-step {
+      animation: fadeSlideUp 0.28s ease-out forwards;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-zellige-100 selection:text-zellige-800">
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 max-w-sm pointer-events-none"></div>
+
+  <!-- Top Navigation Header -->
+  <header class="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-sand-200 shadow-xs">
+    <div class="max-w-5xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+      <!-- Brand / Logo -->
+      <button onclick="goHome()" class="flex items-center gap-3 text-left group focus:outline-none">
+        <div class="w-10 h-10 rounded-xl bg-zellige-600 text-white flex items-center justify-center shadow-sm group-hover:bg-zellige-700 transition-colors shrink-0">
+          <!-- Moroccan 8-point star SVG -->
+          <svg class="w-6 h-6 text-saffron-400" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 1L14.8 6.2L20.5 5.5L19.8 11.2L23 14L19.8 16.8L20.5 22.5L14.8 21.8L12 23L9.2 21.8L3.5 22.5L4.2 16.8L1 14L4.2 11.2L3.5 5.5L9.2 6.2L12 1Z" opacity="0.25"/>
+            <path d="M12 2.5L14.3 7.7L19.5 7.7L16.3 12L19.5 16.3L14.3 16.3L12 21.5L9.7 16.3L4.5 16.3L7.7 12L4.5 7.7L9.7 7.7L12 2.5Z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-display font-extrabold text-lg text-zellige-700 tracking-tight">Darija Bil-3arabiya</span>
+            <span class="hidden sm:inline-block arabic-text text-sm font-bold text-terracotta-600 bg-terracotta-50 px-2 py-0.5 rounded-lg">بالدارجة</span>
+          </div>
+          <p class="text-xs text-slate-500 hidden sm:block">Marokkanisch für Familie &amp; Urlaub</p>
+        </div>
+      </button>
+
+      <!-- Stats & Controls -->
+      <div class="flex items-center flex-wrap gap-2 sm:gap-3">
+        <!-- Stats Pills -->
+        <div class="flex items-center gap-1.5 bg-sand-50 border border-sand-200 px-2.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold">
+          <span title="Tages-Streak">🔥 <span id="stat-streak">0</span></span>
+          <span class="text-sand-300">|</span>
+          <span title="Gelernte Ausdrücke">📚 <span id="stat-phrases">0</span></span>
+          <span class="text-sand-300">|</span>
+          <span title="Lernpunkte (XP)" class="text-saffron-600">⭐ <span id="stat-xp">0</span></span>
+        </div>
+
+        <!-- Global Transliteration Toggle -->
+        <button id="toggle-translit-btn" onclick="toggleTransliteration()"
+          class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs sm:text-sm font-semibold border transition-all cursor-pointer"
+          title="Lautschrift ein- oder ausblenden, um das Lesen der arabischen Schrift zu trainieren">
+          <span id="translit-indicator" class="w-2 h-2 rounded-full"></span>
+          <span>Lautschrift: <strong id="translit-label">AN</strong></span>
+        </button>
+
+        <!-- Extend / Backup Button -->
+        <button onclick="openExtendModal()"
+          class="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs sm:text-sm font-semibold bg-zellige-50 text-zellige-700 hover:bg-zellige-100 border border-zellige-200 transition-colors cursor-pointer"
+          title="Neue Kapitel importieren oder Fortschritt sichern">
+          <span>➕</span>
+          <span class="hidden md:inline">Kapitel erweitern</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Area -->
+  <main id="app-main" class="flex-1 max-w-5xl w-full mx-auto px-4 py-6 sm:py-8">
+    <!-- Rendered dynamically via JS -->
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-sand-200 bg-white/70 py-4 px-4 mt-8">
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-500">
+      <p>Marokkanisches Arabisch (Darija) • Lautschrift-Legende: <strong>3</strong> = ع · <strong>7</strong> = ح · <strong>9</strong> = ق · <strong>kh</strong> = خ · <strong>gh</strong> = غ</p>
+      <p>Dein Lernstand wird lokal in deinem Browser gespeichert.</p>
+    </div>
+  </footer>
+
+  <!-- Modal Backdrop & Container -->
+  <div id="modal-backdrop" class="fixed inset-0 z-40 bg-slate-900/50 backdrop-blur-xs hidden items-center justify-center p-4 overflow-y-auto">
+    <div id="modal-content" class="bg-white rounded-3xl border border-sand-200 shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 relative animate-step">
+      <!-- Dynamic modal content -->
+    </div>
+  </div>
+
+  <script>
+    /**
+     * ============================================================================
+     * 1. MODULARES CURRICULUM (KAPITEL 1 BIS 5)
+     * Jedes Kapitel ist sauber strukturiert, damit später problemlos weitere
+     * Kapitel (Kapitel 6, 7, ...) angehängt oder per JSON importiert werden können.
+     * ============================================================================
+     */
+    const DEFAULT_CURRICULUM = [
+      {
+        id: "kapitel-1",
+        number: 1,
+        title: "Begrüßung, Familie & Smalltalk",
+        subtitle: "Herzliche marokkanische Begrüßungen, nach der Familie fragen und sich vorstellen",
+        icon: "👋",
+        lessons: [
+          {
+            id: "k1-l1",
+            title: "Herzliche Begrüßung & Befinden",
+            duration: "5 Min.",
+            phrases: [
+              {
+                id: "p1_1",
+                ar: "كيداير؟ / كيدايرا؟",
+                tr: "Kidayr? (m) / Kidayra? (w)",
+                de: "Wie geht es dir?",
+                note: "In Darija unterscheidet man das Geschlecht: 'Kidayr?' fragt man einen Mann, 'Kidayra?' eine Frau."
+              },
+              {
+                id: "p1_2",
+                ar: "لاباس، الحمد لله",
+                tr: "Labas, l7amdulillah",
+                de: "Mir geht es gut, Gott sei Dank",
+                note: "Die klassische marokkanische Antwort. Auch wenn man müde ist, antwortet man höflich zuerst mit 'Labas, l7amdulillah'."
+              },
+              {
+                id: "p1_3",
+                ar: "كيف دايرة العائلة؟",
+                tr: "Kif dayra l-3a2ila?",
+                de: "Wie geht es der Familie?",
+                note: "In Marokko ist es sehr herzlich und wichtig, sich ausführlich nach dem Befinden der ganzen Familie zu erkundigen."
+              },
+              {
+                id: "p1_4",
+                ar: "توحشتك بزاف!",
+                tr: "Twa7eshtek bzzaf!",
+                de: "Ich habe dich sehr vermisst!",
+                note: "Perfekt für das Wiedersehen mit Verwandten! 'Bzzaf' bedeutet 'sehr' oder 'viel' und ist eines der häufigsten Darija-Wörter."
+              },
+              {
+                id: "p1_5",
+                ar: "كلشي مزيان؟",
+                tr: "Kulshi mezyan?",
+                de: "Alles gut / Alles in Ordnung?",
+                note: "'Mezyan' heißt 'gut / schön / prima'. Als Antwort sagt man einfach: 'Kulshi mezyan, l7amdulillah!'"
+              }
+            ],
+            exercises: [
+              {
+                type: "choice",
+                prompt: "Du begrüßt deine Tante (Frau) in Marokko. Wie fragst du sie richtig: „Wie geht es dir?“",
+                options: [
+                  { ar: "كيدايرا؟", tr: "Kidayra?", hint: "Weibliche Form (-a)", correct: true },
+                  { ar: "كيداير؟", tr: "Kidayr?", hint: "Männliche Form", correct: false },
+                  { ar: "بشحال هذا؟", tr: "Bchhal hada?", hint: "Wie viel kostet das?", correct: false }
+                ],
+                explanation: "Für Frauen hängt man das '-a' an: 'Kidayra?'. Bei Männern sagt man 'Kidayr?'."
+              },
+              {
+                type: "builder",
+                prompt: "Baue den Satz: „Wie geht es der Familie?“",
+                targetAr: "كيف دايرة العائلة؟",
+                targetTr: "Kif dayra l-3a2ila?",
+                words: [
+                  { ar: "كيف", tr: "Kif" },
+                  { ar: "دايرة", tr: "dayra" },
+                  { ar: "العائلة؟", tr: "l-3a2ila?" },
+                  { ar: "بزاف", tr: "bzzaf" }
+                ]
+              },
+              {
+                type: "cloze",
+                prompt: "Deine Cousine fragt dich: „Kidayr/a?“ Du antwortest klassisch und höflich:",
+                sentenceBefore: "لاباس،",
+                sentenceAfter: "!",
+                options: [
+                  { ar: "الحمد لله", tr: "l7amdulillah", correct: true },
+                  { ar: "بشحال", tr: "bchhal", correct: false },
+                  { ar: "غالي", tr: "ghali", correct: false }
+                ],
+                explanation: "„Labas, l7amdulillah“ (Gut, Gott sei Dank) ist die Standard-Antwort auf fast jede Befindensfrage."
+              },
+              {
+                type: "listening",
+                audioAr: "توحشتك بزاف",
+                audioTr: "Twa7eshtek bzzaf!",
+                prompt: "Höre genau zu: Was sagt dein Familienmitglied zu dir?",
+                options: [
+                  { text: "Ich habe dich sehr vermisst!", correct: true },
+                  { text: "Wie viel kostet das?", correct: false },
+                  { text: "Ich möchte einen Minztee.", correct: false },
+                  { text: "Geh geradeaus.", correct: false }
+                ]
+              },
+              {
+                type: "speaking",
+                prompt: "Sprich diesen herzlichen Gruß laut aus:",
+                targetAr: "لاباس الحمد لله",
+                targetTr: "Labas, l7amdulillah",
+                targetDe: "Mir geht es gut, Gott sei Dank"
+              }
+            ]
+          },
+          {
+            id: "k1-l2",
+            title: "Meine Familie & Verwandte",
+            duration: "6 Min.",
+            phrases: [
+              {
+                id: "p1_6",
+                ar: "خويا / ختي",
+                tr: "Khuya / Khti",
+                de: "Mein Bruder / Meine Schwester",
+                note: "Die Endung '-i' oder '-ya' bedeutet 'mein/meine'. Man nutzt 'Khuya' und 'Khti' oft auch freundlich für Gleichaltrige!"
+              },
+              {
+                id: "p1_7",
+                ar: "عمي / عمتي",
+                tr: "3emmi / 3emmti",
+                de: "Mein Onkel / Meine Tante (väterlicherseits)",
+                note: "Im Arabischen unterscheidet man zwischen der Seite des Vaters (3emm / 3emma) und der Seite der Mutter (khal / khala)."
+              },
+              {
+                id: "p1_8",
+                ar: "خالي / خالتي",
+                tr: "Khali / Khalti",
+                de: "Mein Onkel / Meine Tante (mütterlicherseits)",
+                note: "Sehr liebevolle Anrede – in Marokko nennt man ältere Bekannte der Familie aus Respekt oft ebenfalls 'Khalti' oder '3emmi'."
+              },
+              {
+                id: "p1_9",
+                ar: "جدي / جداتي",
+                tr: "Jeddi / Jeddati",
+                de: "Mein Großvater / Meine Großmutter",
+                note: "Großeltern genießen höchsten Respekt. Ein herzliches 'Kidayra a jeddati?' zaubert sofort ein Lächeln ins Gesicht."
+              },
+              {
+                id: "p1_10",
+                ar: "الوالدين ديالي",
+                tr: "L-walidin dyali",
+                de: "Meine Eltern",
+                note: "'Dyali' bedeutet 'mein/meine' und wird einfach hinter das Substantiv gesetzt."
+              }
+            ],
+            exercises: [
+              {
+                type: "choice",
+                prompt: "Du möchtest über deine Tante mütterlicherseits sprechen. Welches Wort passt?",
+                options: [
+                  { ar: "خالتي", tr: "Khalti", hint: "Tante (mütterlicherseits)", correct: true },
+                  { ar: "خويا", tr: "Khuya", hint: "Mein Bruder", correct: false },
+                  { ar: "جدي", tr: "Jeddi", hint: "Mein Großvater", correct: false }
+                ],
+                explanation: "'Khalti' ist die Tante mütterlicherseits (von 'khal'), '3emmti' ist die Tante väterlicherseits."
+              },
+              {
+                type: "builder",
+                prompt: "Setze zusammen: „Meine Eltern“",
+                targetAr: "الوالدين ديالي",
+                targetTr: "L-walidin dyali",
+                words: [
+                  { ar: "الوالدين", tr: "L-walidin" },
+                  { ar: "ديالي", tr: "dyali" },
+                  { ar: "جدي", tr: "jeddi" }
+                ]
+              },
+              {
+                type: "cloze",
+                prompt: "Du begrüßt deinen Großvater: „أهلا، كيف داير أ ___؟“",
+                sentenceBefore: "أهلا، كيف داير أ",
+                sentenceAfter: "؟",
+                options: [
+                  { ar: "جدي", tr: "jeddi", correct: true },
+                  { ar: "جداتي", tr: "jeddati", correct: false },
+                  { ar: "ختي", tr: "khti", correct: false }
+                ],
+                explanation: "Da 'kidayr' männlich ist, passt 'jeddi' (mein Großvater)."
+              },
+              {
+                type: "listening",
+                audioAr: "الوالدين ديالي",
+                audioTr: "L-walidin dyali",
+                prompt: "Was hast du gerade gehört?",
+                options: [
+                  { text: "Meine Eltern", correct: true },
+                  { text: "Meine Schwester", correct: false },
+                  { text: "Mein Onkel", correct: false },
+                  { text: "Alles in Ordnung", correct: false }
+                ]
+              }
+            ]
+          },
+          {
+            id: "k1-l3",
+            title: "Sich vorstellen & Herkunft",
+            duration: "5 Min.",
+            phrases: [
+              {
+                id: "p1_11",
+                ar: "أنا من ألمانيا",
+                tr: "Ana men Almaniya",
+                de: "Ich komme aus Deutschland",
+                note: "'Ana' = ich, 'men' = aus/von."
+              },
+              {
+                id: "p1_12",
+                ar: "عائلتي من المغرب",
+                tr: "3a2ilti men l-Maghrib",
+                de: "Meine Familie kommt aus Marokko",
+                note: "'L-Maghrib' ist der arabische Name für Marokko."
+              },
+              {
+                id: "p1_13",
+                ar: "متشرفين",
+                tr: "Metsherrfin",
+                de: "Sehr erfreut / Freut mich",
+                note: "Sagt man, wenn man neue Verwandte oder Freunde kennenlernt."
+              },
+              {
+                id: "p1_14",
+                ar: "كنهضر شوية الدارجة",
+                tr: "Kanehḍer shwiya d-Darija",
+                de: "Ich spreche ein bisschen Darija",
+                note: "Ein absoluter Eisbrecher! Marokkaner freuen sich riesig, wenn man das sagt, und helfen dann geduldig beim Reden."
+              }
+            ],
+            exercises: [
+              {
+                type: "builder",
+                prompt: "Baue den Satz: „Ich spreche ein bisschen Darija“",
+                targetAr: "كنهضر شوية الدارجة",
+                targetTr: "Kanehḍer shwiya d-Darija",
+                words: [
+                  { ar: "كنهضر", tr: "Kanehḍer" },
+                  { ar: "شوية", tr: "shwiya" },
+                  { ar: "الدارجة", tr: "d-Darija" },
+                  { ar: "بزاف", tr: "bzzaf" }
+                ]
+              },
+              {
+                type: "choice",
+                prompt: "Du lernst den Ehemann deiner Cousine kennen. Was sagst du zur Begrüßung?",
+                options: [
+                  { ar: "متشرفين!", tr: "Metsherrfin!", hint: "Freut mich!", correct: true },
+                  { ar: "شبعت، شكرا", tr: "Chbe3t, shukran", hint: "Ich bin satt, danke", correct: false },
+                  { ar: "فين كاين السوق؟", tr: "Fin kayn s-souq?", hint: "Wo ist der Markt?", correct: false }
+                ],
+                explanation: "„Metsherrfin!“ bedeutet „Sehr erfreut!“ und passt immer beim Kennenlernen."
+              },
+              {
+                type: "cloze",
+                prompt: "Vervollständige den Satz: „Meine Familie kommt aus Marokko“",
+                sentenceBefore: "عائلتي من",
+                sentenceAfter: ".",
+                options: [
+                  { ar: "المغرب", tr: "l-Maghrib", correct: true },
+                  { ar: "ألمانيا", tr: "Almaniya", correct: false },
+                  { ar: "العائلة", tr: "l-3a2ila", correct: false }
+                ],
+                explanation: "'L-Maghrib' bedeutet Marokko."
+              },
+              {
+                type: "speaking",
+                prompt: "Probiere deinen neuen Eisbrecher-Satz aus:",
+                targetAr: "كنهضر شوية الدارجة",
+                targetTr: "Kanehḍer shwiya d-Darija",
+                targetDe: "Ich spreche ein bisschen Darija"
+              }
+            ]
+          }
+        ],
+        summary: {
+          grammarTips: [
+            {
+              title: "1. Männlich vs. Weiblich (-a Endung)",
+              text: "Im Darija ändert sich die Endung vieler Wörter je nachdem, ob du mit einem Mann oder einer Frau sprichst: <strong>Kidayr?</strong> (m) → <strong>Kidayra?</strong> (w). Bei dir selbst genauso: <strong>Ana fer7an</strong> (ich bin glücklich, m) vs. <strong>Ana fer7ana</strong> (w)."
+            },
+            {
+              title: "2. Besitz anzeigen (-i / -ti / dyali)",
+              text: "Für „mein/meine“ hängst du meist ein <strong>-i</strong> an (z. B. <em>khti</em> = meine Schwester, <em>3emmi</em> = mein Onkel) oder setzt <strong>dyali</strong> dahinter (<em>l-walidin dyali</em> = meine Eltern)."
+            },
+            {
+              title: "3. Kultur-Tipp: Herzliche Begrüßung",
+              text: "In Marokko fragt man nicht nur einmal „Wie geht's?“, sondern gerne nach der Gesundheit, den Eltern und der Familie. Das zeigt echte Wertschätzung!"
+            }
+          ]
+        },
+        chapterQuiz: [
+          {
+            type: "choice",
+            prompt: "Wie fragst du deinen Onkel (Mann): „Wie geht es dir?“",
+            options: [
+              { ar: "كيداير؟", tr: "Kidayr?", correct: true },
+              { ar: "كيدايرا؟", tr: "Kidayra?", correct: false },
+              { ar: "متشرفين", tr: "Metsherrfin", correct: false }
+            ],
+            explanation: "Für männliche Gesprächspartner verwendet man 'Kidayr?'."
+          },
+          {
+            type: "listening",
+            audioAr: "كيف دايرة العائلة؟",
+            audioTr: "Kif dayra l-3a2ila?",
+            prompt: "Hörverständnis: Was wird hier gefragt?",
+            options: [
+              { text: "Wie geht es der Familie?", correct: true },
+              { text: "Woher kommst du?", correct: false },
+              { text: "Wie heißt deine Schwester?", correct: false },
+              { text: "Alles in Ordnung?", correct: false }
+            ]
+          },
+          {
+            type: "builder",
+            prompt: "Bilde den Satz: „Ich habe dich sehr vermisst!“",
+            targetAr: "توحشتك بزاف!",
+            targetTr: "Twa7eshtek bzzaf!",
+            words: [
+              { ar: "توحشتك", tr: "Twa7eshtek" },
+              { ar: "بزاف!", tr: "bzzaf!" },
+              { ar: "شوية", tr: "shwiya" }
+            ]
+          },
+          {
+            type: "cloze",
+            prompt: "Was bedeutet „Meine Großmutter“ auf Darija?",
+            sentenceBefore: "هذي",
+            sentenceAfter: ".",
+            options: [
+              { ar: "جداتي", tr: "jeddati", correct: true },
+              { ar: "جدي", tr: "jeddi", correct: false },
+              { ar: "خالي", tr: "khali", correct: false }
+            ],
+            explanation: "'Jeddati' ist meine Großmutter, 'jeddi' mein Großvater."
+          },
+          {
+            type: "choice",
+            prompt: "Wie sagst du: „Ich spreche ein bisschen Darija“?",
+            options: [
+              { ar: "كنهضر شوية الدارجة", tr: "Kanehḍer shwiya d-Darija", correct: true },
+              { ar: "أنا من ألمانيا", tr: "Ana men Almaniya", correct: false },
+              { ar: "كلشي مزيان", tr: "Kulshi mezyan", correct: false }
+            ],
+            explanation: "„Kanehḍer shwiya d-Darija“ heißt „Ich spreche ein bisschen Darija“."
+          },
+          {
+            type: "choice",
+            prompt: "Was ist der Unterschied zwischen „3emmi“ und „Khali“?",
+            options: [
+              { ar: "عمي / خالي", tr: "3emmi = Vaterseite, Khali = Mutterseite", correct: true },
+              { ar: "عمي / خالي", tr: "3emmi = Bruder, Khali = Großvater", correct: false },
+              { ar: "عمي / خالي", tr: "Beides bedeutet Tante", correct: false }
+            ],
+            explanation: "3emmi ist der Onkel väterlicherseits, Khali der Onkel mütterlicherseits."
+          },
+          {
+            type: "builder",
+            prompt: "Baue den Satz: „Ich komme aus Deutschland“",
+            targetAr: "أنا من ألمانيا",
+            targetTr: "Ana men Almaniya",
+            words: [
+              { ar: "أنا", tr: "Ana" },
+              { ar: "من", tr: "men" },
+              { ar: "ألمانيا", tr: "Almaniya" },
+              { ar: "المغرب", tr: "l-Maghrib" }
+            ]
+          },
+          {
+            type: "choice",
+            prompt: "Jemand sagt zu dir: „Kulshi mezyan?“ Was antwortest du?",
+            options: [
+              { ar: "كلشي مزيان، الحمد لله", tr: "Kulshi mezyan, l7amdulillah", correct: true },
+              { ar: "توحشتك", tr: "Twa7eshtek", correct: false },
+              { ar: "خالتي", tr: "Khalti", correct: false }
+            ],
+            explanation: "„Alles gut, Gott sei Dank!“ ist die perfekte Antwort."
+          }
+        ]
+      },
+      {
+        id: "kapitel-2",
+        number: 2,
+        title: "Zu Gast bei der Familie & Essen",
+        subtitle: "Marokkanische Gastfreundschaft, Minztee (Atay), Essen loben und höflich ablehnen",
+        icon: "🫖",
+        lessons: [
+          {
+            id: "k2-l1",
+            title: "Gastfreundschaft & Minztee",
+            duration: "5 Min.",
+            phrases: [
+              {
+                id: "p2_1",
+                ar: "مرحبا بيك / بيكم",
+                tr: "Mer7ba bik / bikum",
+                de: "Herzlich willkommen (dir / euch)",
+                note: "Das erste Wort, das du hörst, wenn du ein marokkanisches Haus betrittst! Antwort: 'Allah ybarek fik' (Gott segne dich)."
+              },
+              {
+                id: "p2_2",
+                ar: "تفضل / تفضلي",
+                tr: "Tfeḍḍel (m) / Tfeḍḍli (w)",
+                de: "Bitte sehr / Tritt ein / Greif zu",
+                note: "Wird benutzt, um jemanden hereinzubitten, einen Platz anzubieten oder zum Essen einzuladen."
+              },
+              {
+                id: "p2_3",
+                ar: "بغيتي كاس د أتاي؟",
+                tr: "Bghiti kas d-atay?",
+                de: "Möchtest du ein Glas Minztee?",
+                note: "Marokkanischer Minztee ('Atay') ist das Symbol der Gastfreundschaft. 'Bghiti' heißt 'möchtest du / willst du'."
+              },
+              {
+                id: "p2_4",
+                ar: "بالصحة والراحة",
+                tr: "B-se77a w-ra7a",
+                de: "Guten Appetit / Wohl bekomm's",
+                note: "Wörtlich 'Mit Gesundheit und Ruhe'. Sagt man beim Essen, Trinken und sogar nach dem Duschen oder Friseurbesuch!"
+              },
+              {
+                id: "p2_5",
+                ar: "الله يعطيك الصحة",
+                tr: "Allah y3tik s-se77a",
+                de: "Danke! (Wörtlich: Gott gebe dir Gesundheit)",
+                note: "Die schönste Antwort auf 'B-se77a' oder um der Person zu danken, die gekocht hat."
+              }
+            ],
+            exercises: [
+              {
+                type: "choice",
+                prompt: "Deine Tante stellt eine Kanne frischen Minztee auf den Tisch und sagt: „B-se77a!“ Was antwortest du?",
+                options: [
+                  { ar: "الله يعطيك الصحة", tr: "Allah y3tik s-se77a", hint: "Danke / Gott gebe dir Gesundheit", correct: true },
+                  { ar: "فين كاين الطاكسي؟", tr: "Fin kayn t-taxi?", hint: "Wo ist das Taxi?", correct: false },
+                  { ar: "توحشتك", tr: "Twa7eshtek", hint: "Ich habe dich vermisst", correct: false }
+                ],
+                explanation: "Auf 'B-se77a' antwortet man herzlich mit 'Allah y3tik s-se77a'!"
+              },
+              {
+                type: "builder",
+                prompt: "Baue die Frage: „Möchtest du ein Glas Minztee?“",
+                targetAr: "بغيتي كاس د أتاي؟",
+                targetTr: "Bghiti kas d-atay?",
+                words: [
+                  { ar: "بغيتي", tr: "Bghiti" },
+                  { ar: "كاس", tr: "kas" },
+                  { ar: "د أتاي؟", tr: "d-atay?" },
+                  { ar: "الماء", tr: "l-ma" }
+                ]
+              },
+              {
+                type: "cloze",
+                prompt: "Du bittest deine Schwester oder Cousine herein oder zum Essen: „___!“",
+                sentenceBefore: "مرحبا بيك،",
+                sentenceAfter: "!",
+                options: [
+                  { ar: "تفضلي", tr: "tfeḍḍli", correct: true },
+                  { ar: "تفضل", tr: "tfeḍḍel", correct: false },
+                  { ar: "شبعت", tr: "chbe3t", correct: false }
+                ],
+                explanation: "Für eine Frau hängt man das '-i' an: 'tfeḍḍli'."
+              },
+              {
+                type: "listening",
+                audioAr: "الله يعطيك الصحة",
+                audioTr: "Allah y3tik s-se77a",
+                prompt: "Höre zu: Welcher Ausdruck ist das?",
+                options: [
+                  { text: "Gott gebe dir Gesundheit (Dank für Essen/Tee)", correct: true },
+                  { text: "Ich bin aus Deutschland", correct: false },
+                  { text: "Wie viel kostet das?", correct: false },
+                  { text: "Bis morgen, so Gott will", correct: false }
+                ]
+              }
+            ]
+          },
+          {
+            id: "k2-l2",
+            title: "Essen loben & Satt sein",
+            duration: "6 Min.",
+            phrases: [
+              {
+                id: "p2_6",
+                ar: "الماكلة بنينة بزاف!",
+                tr: "L-makla bnina bzzaf!",
+                de: "Das Essen ist sehr lecker!",
+                note: "'L-makla' = das Essen, 'bnina' = lecker (weiblich, passend zu l-makla)."
+              },
+              {
+                id: "p2_7",
+                ar: "تبارك الله على يديك",
+                tr: "Tbarkallah 3la yeddik",
+                de: "Ein großes Kompliment für deine Kochkünste!",
+                note: "Wörtlich 'Gottes Segen auf deinen Händen'. Das größte Lob für jede marokkanische Köchin und jeden Koch!"
+              },
+              {
+                id: "p2_8",
+                ar: "شبعت، الحمد لله",
+                tr: "Chbe3t, l7amdulillah",
+                de: "Ich bin satt, Gott sei Dank",
+                note: "Wichtiges Überlebenswort bei marokkanischen Familienessen, da Gastgeber immer noch Nachschlag auflegen!"
+              },
+              {
+                id: "p2_9",
+                ar: "غير شوية، عافاك",
+                tr: "Ghir shwiya, 3afak",
+                de: "Nur ein bisschen, bitte",
+                note: "'3afak' heißt 'bitte'. Perfekt, wenn du noch etwas probieren möchtest, aber nicht eine riesige Portion schaffst."
+              },
+              {
+                id: "p2_10",
+                ar: "لا شكرا، بركة",
+                tr: "La shukran, baraka",
+                de: "Nein danke, es reicht",
+                note: "'Baraka' heißt wörtlich 'Segen', bedeutet im Alltag aber freundlich 'es genügt / reicht'."
+              }
+            ],
+            exercises: [
+              {
+                type: "choice",
+                prompt: "Die Tajine schmeckt fantastisch! Wie machst du deiner Tante ein richtig großes Kompliment?",
+                options: [
+                  { ar: "الماكلة بنينة بزاف! تبارك الله على يديك", tr: "L-makla bnina bzzaf! Tbarkallah 3la yeddik", hint: "Sehr lecker + großes Lob für die Kochkünste", correct: true },
+                  { ar: "لا شكرا، بركة", tr: "La shukran, baraka", hint: "Nein danke, es reicht", correct: false },
+                  { ar: "غالي شوية", tr: "Ghali shwiya", hint: "Etwas teuer", correct: false }
+                ],
+                explanation: "'L-makla bnina bzzaf' + 'Tbarkallah 3la yeddik' sorgt für strahlende Gesichter am Tisch!"
+              },
+              {
+                type: "builder",
+                prompt: "Baue den Satz: „Nur ein bisschen, bitte“",
+                targetAr: "غير شوية، عافاك",
+                targetTr: "Ghir shwiya, 3afak",
+                words: [
+                  { ar: "غير", tr: "Ghir" },
+                  { ar: "شوية،", tr: "shwiya," },
+                  { ar: "عافاك", tr: "3afak" },
+                  { ar: "بزاف", tr: "bzzaf" }
+                ]
+              },
+              {
+                type: "cloze",
+                prompt: "Dein Onkel will dir zum dritten Mal Couscous nachlegen, aber du kannst wirklich nicht mehr:",
+                sentenceBefore: "الله يعطيك الصحة،",
+                sentenceAfter: "، الحمد لله!",
+                options: [
+                  { ar: "شبعت", tr: "chbe3t", correct: true },
+                  { ar: "بغيت", tr: "bghit", correct: false },
+                  { ar: "كيداير", tr: "kidayr", correct: false }
+                ],
+                explanation: "'Chbe3t' heißt 'Ich bin satt'."
+              },
+              {
+                type: "speaking",
+                prompt: "Lobe das Essen auf Darija:",
+                targetAr: "الماكلة بنينة بزاف",
+                targetTr: "L-makla bnina bzzaf",
+                targetDe: "Das Essen ist sehr lecker"
+              }
+            ]
+          },
+          {
+            id: "k2-l3",
+            title: "Wasser, Vorlieben & Zutaten",
+            duration: "5 Min.",
+            phrases: [
+              {
+                id: "p2_11",
+                ar: "بغيت الماء، عافاك",
+                tr: "Bghit l-ma, 3afak",
+                de: "Ich möchte bitte Wasser",
+                note: "'Bghit' = ich möchte / ich will, 'l-ma' = das Wasser."
+              },
+              {
+                id: "p2_12",
+                ar: "بلا لحم / بلا سكر",
+                tr: "Bla l7em / Bla sukkar",
+                de: "Ohne Fleisch / Ohne Zucker",
+                note: "'Bla' bedeutet 'ohne'. Super praktisch beim Tee ('atay bla sukkar') oder Essen!"
+              },
+              {
+                id: "p2_13",
+                ar: "عزيز عليا الطاجين",
+                tr: "3ziz 3liya t-tajine",
+                de: "Ich mag Tajine sehr / Tajine ist mir lieb",
+                note: "'3ziz 3liya ...' heißt wörtlich 'lieb ist mir ...' und ist die übliche Art zu sagen 'Ich mag ...'."
+              },
+              {
+                id: "p2_14",
+                ar: "واش حار؟",
+                tr: "Wash 7arr?",
+                de: "Ist es scharf?",
+                note: "'Wash' leitet eine Ja/Nein-Frage ein! '7arr' = scharf (z. B. mit Harissa)."
+              }
+            ],
+            exercises: [
+              {
+                type: "choice",
+                prompt: "Du trinkst deinen Minztee lieber ohne Zucker. Wie sagst du „Ohne Zucker, bitte“?",
+                options: [
+                  { ar: "بلا سكر، عافاك", tr: "Bla sukkar, 3afak", hint: "Ohne Zucker, bitte", correct: true },
+                  { ar: "بلا لحم، عافاك", tr: "Bla l7em, 3afak", hint: "Ohne Fleisch, bitte", correct: false },
+                  { ar: "واش حار؟", tr: "Wash 7arr?", hint: "Ist es scharf?", correct: false }
+                ],
+                explanation: "'Bla' = ohne, 'sukkar' = Zucker."
+              },
+              {
+                type: "builder",
+                prompt: "Baue den Satz: „Ich möchte bitte Wasser“",
+                targetAr: "بغيت الماء، عافاك",
+                targetTr: "Bghit l-ma, 3afak",
+                words: [
+                  { ar: "بغيت", tr: "Bghit" },
+                  { ar: "الماء،", tr: "l-ma," },
+                  { ar: "عافاك", tr: "3afak" },
+                  { ar: "أتاي", tr: "atay" }
+                ]
+              },
+              {
+                type: "listening",
+                audioAr: "عزيز عليا الطاجين",
+                audioTr: "3ziz 3liya t-tajine",
+                prompt: "Was drückt dieser Satz aus?",
+                options: [
+                  { text: "Ich mag Tajine sehr", correct: true },
+                  { text: "Ist die Tajine scharf?", correct: false },
+                  { text: "Ich möchte ohne Fleisch essen", correct: false },
+                  { text: "Wo ist das Wasser?", correct: false }
+                ]
+              }
+            ]
+          }
+        ],
+        summary: {
+          grammarTips: [
+            {
+              title: "1. „Ich möchte“ mit Bghit",
+              text: "<strong>Bghit</strong> (ich möchte / will) ist eines der nützlichsten Wörter überhaupt: <em>Bghit l-ma</em> (Ich möchte Wasser), <em>Bghit atay</em> (Ich möchte Tee). Für „Möchtest du?“ sagst du <strong>Bghiti?</strong>."
+            },
+            {
+              title: "2. Ja/Nein-Fragen mit „Wash“",
+              text: "Setze einfach <strong>Wash</strong> an den Satzanfang, um eine Ja/Nein-Frage zu bilden: <em>Wash 7arr?</em> (Ist es scharf?), <em>Wash kulshi mezyan?</em> (Ist alles gut?)."
+            },
+            {
+              title: "3. Kultur-Tipp: Am Familientisch",
+              text: "In Marokko isst man oft gemeinsam aus einer großen Tajine- oder Couscous-Schale – jeweils aus dem Bereich direkt vor sich. Gastgeber legen dir gerne die besten Stücke zu; mit <strong>Chbe3t, l7amdulillah</strong> signalisierst du dankbar, dass du satt bist."
+            }
+          ]
+        },
+        chapterQuiz: [
+          {
+            type: "choice",
+            prompt: "Was bedeutet „B-se77a w-ra7a“?",
+            options: [
+              { ar: "بالصحة والراحة", tr: "Guten Appetit / Wohl bekomm's", correct: true },
+              { ar: "بالصحة والراحة", tr: "Wie viel kostet das?", correct: false },
+              { ar: "بالصحة والراحة", tr: "Auf Wiedersehen", correct: false }
+            ],
+            explanation: "'B-se77a w-ra7a' wünscht man beim Essen und Trinken."
+          },
+          {
+            type: "builder",
+            prompt: "Baue den Satz: „Das Essen ist sehr lecker!“",
+            targetAr: "الماكلة بنينة بزاف!",
+            targetTr: "L-makla bnina bzzaf!",
+            words: [
+              { ar: "الماكلة", tr: "L-makla" },
+              { ar: "بنينة", tr: "bnina" },
+              { ar: "بزاف!", tr: "bzzaf!" },
+              { ar: "شوية", tr: "shwiya" }
+            ]
+          },
+          {
+            type: "cloze",
+            prompt: "Wie sagst du „Ohne Fleisch“?",
+            sentenceBefore: "عافاك،",
+            sentenceAfter: ".",
+            options: [
+              { ar: "بلا لحم", tr: "bla l7em", correct: true },
+              { ar: "بلا سكر", tr: "bla sukkar", correct: false },
+              { ar: "بغيت الماء", tr: "bghit l-ma", correct: false }
+            ],
+            explanation: "'Bla' = ohne, 'l7em' = Fleisch."
+          },
+          {
+            type: "listening",
+            audioAr: "شبعت، الحمد لله",
+            audioTr: "Chbe3t, l7amdulillah",
+            prompt: "Höre zu: Was sagt der Gast?",
+            options: [
+              { text: "Ich bin satt, Gott sei Dank", correct: true },
+              { text: "Ich habe Hunger", correct: false },
+              { text: "Ich möchte noch ein Glas Tee", correct: false },
+              { text: "Herzlich willkommen", correct: false }
+            ]
+          },
+          {
+            type: "choice",
+            prompt: "Wie fragst du: „Ist es scharf?“",
+            options: [
+              { ar: "واش حار؟", tr: "Wash 7arr?", correct: true },
+              { ar: "واش مزيان؟", tr: "Wash mezyan?", correct: false },
+              { ar: "بغيتي أتاي؟", tr: "Bghiti atay?", correct: false }
+            ],
+            explanation: "'Wash' macht den Satz zur Frage, '7arr' bedeutet scharf."
+          },
+          {
+            type: "choice",
+            prompt: "Was ist die passende Antwort auf „B-se77a!“?",
+            options: [
+              { ar: "الله يعطيك الصحة", tr: "Allah y3tik s-se77a", correct: true },
+              { ar: "مرحبا بيك", tr: "Mer7ba bik", correct: false },
+              { ar: "توحشتك", tr: "Twa7eshtek", correct: false }
+            ],
+            explanation: "Man wünscht dem anderen im Gegenzug Gesundheit: 'Allah y3tik s-se77a'."
+          },
+          {
+            type: "builder",
+            prompt: "Setze zusammen: „Ich mag Tajine sehr“",
+            targetAr: "عزيز عليا الطاجين",
+            targetTr: "3ziz 3liya t-tajine",
+            words: [
+              { ar: "عزيز", tr: "3ziz" },
+              { ar: "عليا", tr: "3liya" },
+              { ar: "الطاجين", tr: "t-tajine" }
+            ]
+          },
+          {
+            type: "choice",
+            prompt: "Was bedeutet „Ghir shwiya, 3afak“?",
+            options: [
+              { ar: "غير شوية، عافاك", tr: "Nur ein bisschen, bitte", correct: true },
+              { ar: "غير شوية، عافاك", tr: "Sehr viel, danke", correct: false },
+              { ar: "غير شوية، عافاك", tr: "Ich bin aus Deutschland", correct: false }
+            ],
+            explanation: "'Ghir' = nur, 'shwiya' = ein bisschen, '3afak' = bitte."
+          }
+        ]
+      },
+      {
+        id: "kapitel-3",
+        number: 3,
+        title: "Unterwegs & Orientierung",
+        subtitle: "Taxi fahren, nach dem Weg fragen, wichtige Zahlen und Uhrzeiten für Verabredungen",
+        icon: "🚕",
+        lessons: [
+          {
+            id: "k3-l1",
+            title: "Im Petit & Grand Taxi",
+            duration: "5 Min.",
+            phrases: [
+              {
+                id: "p3_1",
+                ar: "عافاك، بغيت نمشي لـ...",
+                tr: "3afak, bghit nemshi l-...",
+                de: "Bitte, ich möchte nach ... fahren/gehen",
+                note: "'Nemshi' = ich gehe / fahre. Zum Beispiel: 'Bghit nemshi l-lmdina' (Ich möchte in die Altstadt)."
+              },
+              {
+                id: "p3_2",
+                ar: "وقف هنا، عافاك",
+                tr: "W9ef hna, 3afak",
+                de: "Halten Sie bitte hier an",
+                note: "'W9ef' (gesprochen wqef) = halte an! 'Hna' = hier."
+              },
+              {
+                id: "p3_3",
+                ar: "خدم الكونتور، عافاك",
+                tr: "Kheddem l-compteur, 3afak",
+                de: "Machen Sie bitte das Taxameter an",
+                note: "Im roten/blauen 'Petit Taxi' innerhalb der Stadt läuft normalerweise immer das Taxameter ('compteur')."
+              },
+              {
+                id: "p3_4",
+                ar: "بعيد ولا قريب؟",
+                tr: "B3id wlla 9rib?",
+                de: "Ist es weit oder nah?",
+                note: "'B3id' = weit, 'wlla' = oder, '9rib' (qrib) = nah."
+              }
+            ],
+            exercises: [
+              {
+                type: "choice",
+                prompt: "Du steigst in ein Petit Taxi ein und möchtest in die Altstadt (l-Mdina). Was sagst du?",
+                options: [
+                  { ar: "عافاك، بغيت نمشي للمدينة", tr: "3afak, bghit nemshi l-lmdina", hint: "Bitte, ich möchte in die Medina", correct: true },
+                  { ar: "بغيت كاس د أتاي", tr: "Bghit kas d-atay", hint: "Ich möchte ein Glas Tee", correct: false },
+                  { ar: "شبعت، الحمد لله", tr: "Chbe3t, l7amdulillah", hint: "Ich bin satt", correct: false }
+                ],
+                explanation: "'Bghit nemshi l-...' ist der universelle Satz für jedes Ziel im Taxi."
+              },
+              {
+                type: "builder",
+                prompt: "Baue den Satz: „Halten Sie bitte hier an“",
+                targetAr: "وقف هنا، عافاك",
+                targetTr: "W9ef hna, 3afak",
+                words: [
+                  { ar: "وقف", tr: "W9ef" },
+                  { ar: "هنا،", tr: "hna," },
+                  { ar: "عافاك", tr: "3afak" },
+                  { ar: "نيشان", tr: "nichan" }
+                ]
+              },
+              {
+                type: "cloze",
+                prompt: "Du fragst deinen Cousin, ob das Restaurant weit weg oder ganz nah ist:",
+                sentenceBefore: "المطعم",
+                sentenceAfter: "؟",
+                options: [
+                  { ar: "بعيد ولا قريب", tr: "b3id wlla 9rib", correct: true },
+                  { ar: "حار ولا بنين", tr: "7arr wlla bnina", correct: false },
+                  { ar: "غالي بزاف", tr: "ghali bzzaf", correct: false }
+                ],
+                explanation: "'B3id' (weit) und '9rib' (nah) sind wichtige Gegensätze."
+              },
+              {
+                type: "speaking",
+                prompt: "Sage dem Taxifahrer, dass er hier anhalten soll:",
+                targetAr: "وقف هنا عافاك",
+                targetTr: "W9ef hna, 3afak",
+                targetDe: "Halten Sie bitte hier an"
+              }
+            ]
+          },
+          {
+            id: "k3-l2",
+            title: "Nach dem Weg fragen",
+            duration: "5 Min.",
+            phrases: [
+              {
+                id: "p3_5",
+                ar: "فين كاين...؟",
+                tr: "Fin kayn...?",
+                de: "Wo ist / Wo befindet sich ...?",
+                note: "'Fin' = wo. Für weibliche Orte (z. B. 'la gare' / Bahnhof) sagt man 'Fin kayna...?'"
+              },
+              {
+                id: "p3_6",
+                ar: "سير نيشان",
+                tr: "Sir nichan",
+                de: "Geh geradeaus",
+                note: "'Nichan' bedeutet 'geradeaus' – und im übertragenen Sinne auch 'direkt / ehrlich'!"
+              },
+              {
+                id: "p3_7",
+                ar: "دور على اليمين / اليسار",
+                tr: "Dur 3la l-limen / l-liser",
+                de: "Biege rechts / links ab",
+                note: "'L-limen' = rechts, 'l-liser' = links."
+              },
+              {
+                id: "p3_8",
+                ar: "حدا الجامع / السوق",
+                tr: "7da l-jame3 / s-souq",
+                de: "Neben der Moschee / dem Markt",
+                note: "'7da' = neben / direkt bei."
+              }
+            ],
+            exercises: [
+              {
+                type: "choice",
+                prompt: "Jemand erklärt dir den Weg: „Sir nichan, u dur 3la l-limen.“ Wohin gehst du?",
+                options: [
+                  { ar: "نيشان + اليمين", tr: "Geradeaus und dann rechts abbiegen", correct: true },
+                  { ar: "اليسار", tr: "Sofort links abbiegen", correct: false },
+                  { ar: "وقف هنا", tr: "Hier stehen bleiben", correct: false }
+                ],
+                explanation: "'Sir nichan' = geh geradeaus, 'dur 3la l-limen' = bieg rechts ab."
+              },
+              {
+                type: "builder",
+                prompt: "Frage: „Wo befindet sich der Markt (s-souq)?“",
+                targetAr: "فين كاين السوق؟",
+                targetTr: "Fin kayn s-souq?",
+                words: [
+                  { ar: "فين", tr: "Fin" },
+                  { ar: "كاين", tr: "kayn" },
+                  { ar: "السوق؟", tr: "s-souq?" },
+                  { ar: "هنا", tr: "hna" }
+                ]
+              },
+              {
+                type: "listening",
+                audioAr: "سير نيشان",
+                audioTr: "Sir nichan",
+                prompt: "Was bedeutet diese Wegbeschreibung?",
+                options: [
+                  { text: "Geh geradeaus", correct: true },
+                  { text: "Bieg links ab", correct: false },
+                  { text: "Es ist sehr weit", correct: false },
+                  { text: "Neben der Moschee", correct: false }
+                ]
+              }
+            ]
+          },
+          {
+            id: "k3-l3",
+            title: "Zahlen, Zeit & Verabredungen",
+            duration: "6 Min.",
+            phrases: [
+              {
+                id: "p3_9",
+                ar: "واحد، جوج، تلاتة، ربعة، خمسة",
+                tr: "Wa7ed, juj, tlata, reb3a, khemsa",
+                de: "1, 2, 3, 4, 5",
+                note: "Besonders wichtig: 'Juj' ist im Darija das Wort für 2 (statt 'ithnayn' im Hocharabischen)!"
+              },
+              {
+                id: "p3_10",
+                ar: "عشرة، عشرين، مية درهم",
+                tr: "3eshra, 3eshrin, myat derhem",
+                de: "10, 20, 100 Dirham",
+                note: "Die Währung in Marokko ist der Dirham (DH). Im Alltag rechnen ältere Leute auch manchmal in 'Ryal' (20 Ryal = 1 Dirham)."
+              },
+              {
+                id: "p3_11",
+                ar: "معاش غادي نتلاقاو؟",
+                tr: "M3ash ghadi netla9aw?",
+                de: "Wann treffen wir uns?",
+                note: "'M3ash' = um wie viel Uhr / wann, 'netla9aw' = wir treffen uns."
+              },
+              {
+                id: "p3_12",
+                ar: "دابا / من بعد / غدا إن شاء الله",
+                tr: "Daba / Men be3d / Ghdda insha'Allah",
+                de: "Jetzt / Später / Morgen, so Gott will",
+                note: "'Daba' (jetzt) und 'Ghdda' (morgen) sind echte Darija-Schlüsselwörter!"
+              }
+            ],
+            exercises: [
+              {
+                type: "choice",
+                prompt: "Welche Zahl ist im marokkanischen Darija „juj“?",
+                options: [
+                  { ar: "جوج (2)", tr: "2 (zwei)", correct: true },
+                  { ar: "خمسة (5)", tr: "5 (fünf)", correct: false },
+                  { ar: "عشرة (10)", tr: "10 (zehn)", correct: false }
+                ],
+                explanation: "'Wa7ed' (1), 'juj' (2), 'tlata' (3), 'reb3a' (4), 'khemsa' (5)."
+              },
+              {
+                type: "builder",
+                prompt: "Frage deine Cousins: „Wann treffen wir uns?“",
+                targetAr: "معاش غادي نتلاقاو؟",
+                targetTr: "M3ash ghadi netla9aw?",
+                words: [
+                  { ar: "معاش", tr: "M3ash" },
+                  { ar: "غادي", tr: "ghadi" },
+                  { ar: "نتلاقاو؟", tr: "netla9aw?" },
+                  { ar: "دابا", tr: "daba" }
+                ]
+              },
+              {
+                type: "cloze",
+                prompt: "Dein Onkel fragt: „Wann gehen wir ans Meer?“ Du antwortest: „Morgen, so Gott will!“",
+                sentenceBefore: "",
+                sentenceAfter: "إن شاء الله!",
+                options: [
+                  { ar: "غدا", tr: "Ghdda", correct: true },
+                  { ar: "دابا", tr: "Daba", correct: false },
+                  { ar: "هنا", tr: "Hna", correct: false }
+                ],
+                explanation: "'Ghdda' bedeutet 'morgen', 'daba' bedeutet 'jetzt'."
+              }
+            ]
+          }
+        ],
+        summary: {
+          grammarTips: [
+            {
+              title: "1. Typische Darija-Wörter für Zeit & Ort",
+              text: "Viele Alltagswörter klingen im Darija ganz anders als im Hocharabischen: <strong>Daba</strong> (jetzt), <strong>Ghdda</strong> (morgen), <strong>Nichan</strong> (geradeaus), <strong>Fin</strong> (wo) und <strong>Juj</strong> (zwei)."
+            },
+            {
+              title: "2. Petit Taxi vs. Grand Taxi",
+              text: "In Marokko gibt es kleine Stadttaxis (<em>Petit Taxi</em>, jede Stadt hat eine eigene Farbe wie Rot in Casablanca/Marrakesch oder Blau in Rabat) mit Taxameter (<em>compteur</em>) und weiße Überlandtaxis (<em>Grand Taxi</em>) mit festen Routen."
+            },
+            {
+              title: "3. Dirham & Ryal",
+              text: "Offiziell zahlt man in <strong>Derhem</strong> (Dirham). Auf traditionellen Märkten nennen Verkäufer manchmal Preise in <em>Ryal</em>: Teile den Betrag in Ryal einfach durch 20, um Dirham zu erhalten (z. B. 100 Ryal = 5 Dirham)."
+            }
+          ]
+        },
+        chapterQuiz: [
+          {
+            type: "choice",
+            prompt: "Wie sagst du dem Taxifahrer: „Halten Sie bitte hier an“?",
+            options: [
+              { ar: "وقف هنا، عافاك", tr: "W9ef hna, 3afak", correct: true },
+              { ar: "سير نيشان", tr: "Sir nichan", correct: false },
+              { ar: "معاش غادي نتلاقاو؟", tr: "M3ash ghadi netla9aw?", correct: false }
+            ],
+            explanation: "'W9ef hna, 3afak' = Halten Sie bitte hier an."
+          },
+          {
+            type: "listening",
+            audioAr: "بعيد ولا قريب؟",
+            audioTr: "B3id wlla 9rib?",
+            prompt: "Höre zu: Was wird gefragt?",
+            options: [
+              { text: "Ist es weit oder nah?", correct: true },
+              { text: "Rechts oder links?", correct: false },
+              { text: "Jetzt oder morgen?", correct: false },
+              { text: "Tee oder Wasser?", correct: false }
+            ]
+          },
+          {
+            type: "builder",
+            prompt: "Baue die Frage: „Wo ist die Moschee?“",
+            targetAr: "فين كاين الجامع؟",
+            targetTr: "Fin kayn l-jame3?",
+            words: [
+              { ar: "فين", tr: "Fin" },
+              { ar: "كاين", tr: "kayn" },
+              { ar: "الجامع؟", tr: "l-jame3?" },
+              { ar: "دابا", tr: "daba" }
+            ]
+          },
+          {
+            type: "choice",
+            prompt: "Was bedeutet „Daba“?",
+            options: [
+              { ar: "دابا", tr: "Jetzt", correct: true },
+              { ar: "دابا", tr: "Gestern", correct: false },
+              { ar: "دابا", tr: "Geradeaus", correct: false }
+            ],
+            explanation: "'Daba' bedeutet 'jetzt'."
+          },
+          {
+            type: "cloze",
+            prompt: "Zähle von 1 bis 3 auf Darija: „Wa7ed, ___, tlata“",
+            sentenceBefore: "واحد،",
+            sentenceAfter: "، تلاتة",
+            options: [
+              { ar: "جوج", tr: "juj", correct: true },
+              { ar: "خمسة", tr: "khemsa", correct: false },
+              { ar: "عشرة", tr: "3eshra", correct: false }
+            ],
+            explanation: "Die 2 heißt auf Darija 'juj'."
+          },
+          {
+            type: "choice",
+            prompt: "Wohin musst du gehen, wenn jemand sagt: „Dur 3la l-liser“?",
+            options: [
+              { ar: "اليسار", tr: "Links abbiegen", correct: true },
+              { ar: "اليمين", tr: "Rechts abbiegen", correct: false },
+              { ar: "نيشان", tr: "Geradeaus gehen", correct: false }
+            ],
+            explanation: "'L-liser' = links, 'l-limen' = rechts."
+          },
+          {
+            type: "builder",
+            prompt: "Baue den Satz: „Ich möchte in die Altstadt (l-mdina) fahren“",
+            targetAr: "بغيت نمشي للمدينة",
+            targetTr: "Bghit nemshi l-lmdina",
+            words: [
+              { ar: "بغيت", tr: "Bghit" },
+              { ar: "نمشي", tr: "nemshi" },
+              { ar: "للمدينة", tr: "l-lmdina" }
+            ]
+          },
+          {
+            type: "choice",
+            prompt: "Was bedeutet „7da s-souq“?",
+            options: [
+              { ar: "حدا السوق", tr: "Neben dem Markt", correct: true },
+              { ar: "حدا السوق", tr: "Weit weg vom Markt", correct: false },
+              { ar: "حدا السوق", tr: "Wie viel kostet der Markt?", correct: false }
+            ],
+            explanation: "'7da' bedeutet 'neben / direkt bei'."
+          }
+        ]
+      },
+      {
+        id: "kapitel-4",
+        number: 4,
+        title: "Einkaufen & im Souk",
+        subtitle: "Preise erfragen, freundlich handeln, Mengen bestellen und Souvenirs kaufen",
+        icon: "🛍️",
+        lessons: [
+          {
+            id: "k4-l1",
+            title: "Preise fragen & Stöbern",
+            duration: "5 Min.",
+            phrases: [
+              {
+                id: "p4_1",
+                ar: "بشحال هذا؟ / هادي؟",
+                tr: "Bchhal hada? (m) / hadi? (w)",
+                de: "Wie viel kostet das hier?",
+                note: "'Hada' benutzt man für männliche Dinge (z. B. ein Teppich/Buch), 'hadi' für weibliche Dinge (z. B. eine Tasche/Schale)."
+              },
+              {
+                id: "p4_2",
+                ar: "غير كنشوف، شكرا",
+                tr: "Ghir kanshuf, shukran",
+                de: "Ich schaue nur, danke",
+                note: "Sehr nützlich im Souk, wenn Händler dir freundlich ihre Waren zeigen möchten."
+              },
+              {
+                id: "p4_3",
+                ar: "واش عندك...؟",
+                tr: "Wash 3endek...?",
+                de: "Hast du / Haben Sie ...?",
+                note: "'3endek' = bei dir / du hast. Zum Beispiel: 'Wash 3endek zit argan?' (Haben Sie Arganöl?)."
+              },
+              {
+                id: "p4_4",
+                ar: "مزيان بزاف",
+                tr: "Mezyan bzzaf",
+                de: "Sehr gut / Sehr schön",
+                note: "Kann sowohl zur Qualität eines Produkts als auch als Zustimmung ('Alles klar, super!') gesagt werden."
+              }
+            ],
+            exercises: [
+              {
+                type: "choice",
+                prompt: "Du möchtest im Souk einfach nur in Ruhe stöbern. Was sagst du freundlich zum Verkäufer?",
+                options: [
+                  { ar: "غير كنشوف، شكرا", tr: "Ghir kanshuf, shukran", hint: "Ich schaue nur, danke", correct: true },
+                  { ar: "وقف هنا، عافاك", tr: "W9ef hna, 3afak", hint: "Halten Sie hier an", correct: false },
+                  { ar: "شبعت، الحمد لله", tr: "Chbe3t, l7amdulillah", hint: "Ich bin satt", correct: false }
+                ],
+                explanation: "'Ghir kanshuf, shukran' ist höflich, klar und entspannt im Souk."
+              },
+              {
+                type: "builder",
+                prompt: "Frage: „Haben Sie Arganöl?“",
+                targetAr: "واش عندك زيت أركان؟",
+                targetTr: "Wash 3endek zit argan?",
+                words: [
+                  { ar: "واش", tr: "Wash" },
+                  { ar: "عندك", tr: "3endek" },
+                  { ar: "زيت أركان؟", tr: "zit argan?" },
+                  { ar: "بشحال", tr: "bchhal" }
+                ]
+              },
+              {
+                type: "cloze",
+                prompt: "Du zeigst auf eine schöne Ledertasche (weiblich) und fragst nach dem Preis:",
+                sentenceBefore: "عافاك، بشحال",
+                sentenceAfter: "؟",
+                options: [
+                  { ar: "هادي", tr: "hadi", correct: true },
+                  { ar: "هذا", tr: "hada", correct: false },
+                  { ar: "هنا", tr: "hna", correct: false }
+                ],
+                explanation: "'Hadi' ist die weibliche Form von 'dieses/das hier'."
+              }
+            ]
+          },
+          {
+            id: "k4-l2",
+            title: "Freundlich handeln im Souk",
+            duration: "6 Min.",
+            phrases: [
+              {
+                id: "p4_5",
+                ar: "غالي شوية!",
+                tr: "Ghali shwiya!",
+                de: "Das ist ein bisschen teuer!",
+                note: "Im Souk ist Handeln ein freundliches Gespräch mit Lächeln – 'Ghali shwiya' ist der klassische Einstieg."
+              },
+              {
+                id: "p4_6",
+                ar: "نقص شوية، عافاك",
+                tr: "Na9es shwiya, 3afak",
+                de: "Mach es bitte etwas günstiger (Geh etwas runter)",
+                note: "'Na9es' (naqes) heißt 'reduziere / geh runter'."
+              },
+              {
+                id: "p4_7",
+                ar: "آخر ثمن؟",
+                tr: "Akhir taman?",
+                de: "Letzter Preis?",
+                note: "'Taman' = Preis. Fragt man freundlich gegen Ende der Verhandlung."
+              },
+              {
+                id: "p4_8",
+                ar: "صافي، متفقين",
+                tr: "Safi, mettaf9in",
+                de: "Abgemacht / Einverstanden!",
+                note: "'Safi' heißt 'okay / fertig / abgemacht' und wird in Marokko ständig benutzt!"
+              }
+            ],
+            exercises: [
+              {
+                type: "choice",
+                prompt: "Der Verkäufer nennt einen hohen Touristenpreis. Wie steigst du freundlich ins Verhandeln ein?",
+                options: [
+                  { ar: "غالي شوية! نقص شوية، عافاك", tr: "Ghali shwiya! Na9es shwiya, 3afak", hint: "Etwas teuer! Geh bitte etwas runter", correct: true },
+                  { ar: "الماكلة بنينة بزاف", tr: "L-makla bnina bzzaf", hint: "Das Essen ist lecker", correct: false },
+                  { ar: "سير نيشان", tr: "Sir nichan", hint: "Geh geradeaus", correct: false }
+                ],
+                explanation: "Mit einem Lächeln 'Ghali shwiya! Na9es shwiya, 3afak' zu sagen, öffnet im Souk sofort Türen."
+              },
+              {
+                type: "builder",
+                prompt: "Baue den Satz: „Abgemacht / Einverstanden!“",
+                targetAr: "صافي، متفقين",
+                targetTr: "Safi, mettaf9in",
+                words: [
+                  { ar: "صافي،", tr: "Safi," },
+                  { ar: "متفقين", tr: "mettaf9in" },
+                  { ar: "غالي", tr: "ghali" }
+                ]
+              },
+              {
+                type: "listening",
+                audioAr: "نقص شوية، عافاك",
+                audioTr: "Na9es shwiya, 3afak",
+                prompt: "Was bittet der Käufer hier?",
+                options: [
+                  { text: "Geh bitte mit dem Preis etwas runter", correct: true },
+                  { text: "Gib mir bitte ein Glas Wasser", correct: false },
+                  { text: "Wo ist die Altstadt?", correct: false },
+                  { text: "Wie geht es der Familie?", correct: false }
+                ]
+              },
+              {
+                type: "speaking",
+                prompt: "Übe diesen Satz für den Souk:",
+                targetAr: "غالي شوية عافاك",
+                targetTr: "Ghali shwiya, 3afak",
+                targetDe: "Das ist etwas teuer, bitte"
+              }
+            ]
+          },
+          {
+            id: "k4-l3",
+            title: "Mengen, Obst & Bezahlen",
+            duration: "5 Min.",
+            phrases: [
+              {
+                id: "p4_9",
+                ar: "عافاك عطيني...",
+                tr: "3afak 3tini...",
+                de: "Bitte gib mir / geben Sie mir ...",
+                note: "'3tini' = gib mir! Sehr praktisch am Obststand oder in der Bäckerei."
+              },
+              {
+                id: "p4_10",
+                ar: "كيلو د الليمون",
+                tr: "Kilo d-limoun",
+                de: "Ein Kilo Orangen",
+                note: "Achtung falscher Freund: Im marokkanischen Darija ist 'Limoun' die Orange, während die Zitrone '7amed' heißt!"
+              },
+              {
+                id: "p4_11",
+                ar: "نص كيلو",
+                tr: "Ness kilo",
+                de: "Ein halbes Kilo",
+                note: "'Ness' = halb / Hälfte (auch bei Uhrzeiten: z. B. 'juj w-ness' = halb drei / zwei Uhr dreißig)."
+              },
+              {
+                id: "p4_12",
+                ar: "الصرف / الباقي",
+                tr: "S-serf / L-ba9i",
+                de: "Das Kleingeld / Das Wechselgeld",
+                note: "In kleinen Läden wird oft gefragt: 'Wash 3endek s-serf?' (Hast du Kleingeld?)."
+              }
+            ],
+            exercises: [
+              {
+                type: "choice",
+                prompt: "Du möchtest am Marktstand 1 kg frische Orangen kaufen. Was bestellst du?",
+                options: [
+                  { ar: "عافاك عطيني كيلو د الليمون", tr: "3afak 3tini kilo d-limoun", hint: "Bitte gib mir ein Kilo Orangen", correct: true },
+                  { ar: "بغيت نمشي للمدينة", tr: "Bghit nemshi l-lmdina", hint: "Ich möchte in die Altstadt", correct: false },
+                  { ar: "توحشتك بزاف", tr: "Twa7eshtek bzzaf", hint: "Ich habe dich sehr vermisst", correct: false }
+                ],
+                explanation: "Im Darija heißt 'Limoun' Orange! '3tini kilo d-limoun' = Gib mir ein Kilo Orangen."
+              },
+              {
+                type: "builder",
+                prompt: "Bestelle: „Ein halbes Kilo, bitte“",
+                targetAr: "نص كيلو، عافاك",
+                targetTr: "Ness kilo, 3afak",
+                words: [
+                  { ar: "نص", tr: "Ness" },
+                  { ar: "كيلو،", tr: "kilo," },
+                  { ar: "عافاك", tr: "3afak" },
+                  { ar: "غالي", tr: "ghali" }
+                ]
+              },
+              {
+                type: "cloze",
+                prompt: "Der Verkäufer fragt dich beim Bezahlen mit einem 200-Dirham-Schein:",
+                sentenceBefore: "واش عندك",
+                sentenceAfter: "؟",
+                options: [
+                  { ar: "الصرف", tr: "s-serf", correct: true },
+                  { ar: "الطاجين", tr: "t-tajine", correct: false },
+                  { ar: "السوق", tr: "s-souq", correct: false }
+                ],
+                explanation: "'Wash 3endek s-serf?' = Hast du Kleingeld?"
+              }
+            ]
+          }
+        ],
+        summary: {
+          grammarTips: [
+            {
+              title: "1. „Dieses / Das hier“: Hada vs. Hadi",
+              text: "Zeigst du auf etwas Männliches, fragst du <strong>Bchhal hada?</strong> Bei etwas Weiblichem (oft endet das Wort auf -a) fragst du <strong>Bchhal hadi?</strong>"
+            },
+            {
+              title: "2. Kleiner Stolperstein: Limoun vs. 7amed",
+              text: "Anders als im Deutschen oder Hocharabischen bedeutet <strong>Limoun</strong> in Marokko <em>Orange</em> (für den berühmten frisch gepressten Orangensaft: <em>3asir d-limoun</em>). Zitrone heißt <strong>7amed</strong>."
+            },
+            {
+              title: "3. Kultur-Tipp: Handeln mit Respekt",
+              text: "In Supermärkten und Cafés gibt es Festpreise. Im traditionellen Souk gehört freundliches Verhandeln dazu – immer mit einem Lächeln und Humor. Wenn man sich einigt, besiegelt ein herzliches <strong>Safi, mettaf9in!</strong> den Kauf."
+            }
+          ]
+        },
+        chapterQuiz: [
+          {
+            type: "choice",
+            prompt: "Wie fragst du nach dem Preis eines weiblichen Gegenstands (z. B. einer Tasche)?",
+            options: [
+              { ar: "بشحال هادي؟", tr: "Bchhal hadi?", correct: true },
+              { ar: "بشحال هذا؟", tr: "Bchhal hada?", correct: false },
+              { ar: "فين كاين السوق؟", tr: "Fin kayn s-souq?", correct: false }
+            ],
+            explanation: "'Hadi' verwendet man für weibliche Gegenstände."
+          },
+          {
+            type: "builder",
+            prompt: "Baue den Satz: „Ich schaue nur, danke“",
+            targetAr: "غير كنشوف، شكرا",
+            targetTr: "Ghir kanshuf, shukran",
+            words: [
+              { ar: "غير", tr: "Ghir" },
+              { ar: "كنشوف،", tr: "kanshuf," },
+              { ar: "شكرا", tr: "shukran" }
+            ]
+          },
+          {
+            type: "listening",
+            audioAr: "صافي، متفقين",
+            audioTr: "Safi, mettaf9in",
+            prompt: "Höre zu: Was bedeutet dieser Ausdruck?",
+            options: [
+              { text: "Abgemacht / Einverstanden!", correct: true },
+              { text: "Das ist zu teuer!", correct: false },
+              { text: "Ich habe kein Kleingeld", correct: false },
+              { text: "Halten Sie hier an", correct: false }
+            ]
+          },
+          {
+            type: "choice",
+            prompt: "Was bekommst du, wenn du „Kilo d-limoun“ bestellst?",
+            options: [
+              { ar: "الليمون", tr: "1 kg Orangen", correct: true },
+              { ar: "الليمون", tr: "1 kg Zitronen", correct: false },
+              { ar: "الليمون", tr: "1 kg Oliven", correct: false }
+            ],
+            explanation: "'Limoun' bedeutet auf Darija Orange."
+          },
+          {
+            type: "cloze",
+            prompt: "Wie bittest du den Händler, etwas mit dem Preis herunterzugehen?",
+            sentenceBefore: "",
+            sentenceAfter: "شوية، عافاك!",
+            options: [
+              { ar: "نقص", tr: "Na9es", correct: true },
+              { ar: "وقف", tr: "W9ef", correct: false },
+              { ar: "شبعت", tr: "Chbe3t", correct: false }
+            ],
+            explanation: "'Na9es shwiya, 3afak' = Mach es bitte etwas günstiger."
+          },
+          {
+            type: "choice",
+            prompt: "Was bedeutet „Ness kilo“?",
+            options: [
+              { ar: "نص كيلو", tr: "Ein halbes Kilo", correct: true },
+              { ar: "نص كيلو", tr: "Zwei Kilo", correct: false },
+              { ar: "نص كيلو", tr: "Letzter Preis", correct: false }
+            ],
+            explanation: "'Ness' bedeutet halb / die Hälfte."
+          },
+          {
+            type: "builder",
+            prompt: "Baue die Frage: „Hast du Kleingeld?“",
+            targetAr: "واش عندك الصرف؟",
+            targetTr: "Wash 3endek s-serf?",
+            words: [
+              { ar: "واش", tr: "Wash" },
+              { ar: "عندك", tr: "3endek" },
+              { ar: "الصرف؟", tr: "s-serf?" }
+            ]
+          },
+          {
+            type: "choice",
+            prompt: "Was bedeutet „3afak 3tini...“?",
+            options: [
+              { ar: "عافاك عطيني...", tr: "Bitte gib mir / geben Sie mir ...", correct: true },
+              { ar: "عافاك عطيني...", tr: "Wie heißt du?", correct: false },
+              { ar: "عافاك عطيني...", tr: "Wo ist mein Bruder?", correct: false }
+            ],
+            explanation: "'3tini' heißt 'gib mir'."
+          }
+        ]
+      },
+      {
+        id: "kapitel-5",
+        number: 5,
+        title: "Gefühle, Pläne & Alltag",
+        subtitle: "Gefühle ausdrücken, Pläne mit „ghadi“ schmieden, um Hilfe bitten und herzliche Abschiede",
+        icon: "✨",
+        lessons: [
+          {
+            id: "k5-l1",
+            title: "Gefühle & Befinden ausdrücken",
+            duration: "5 Min.",
+            phrases: [
+              {
+                id: "p5_1",
+                ar: "أنا فرحان / فرحانة",
+                tr: "Ana fer7an (m) / fer7ana (w)",
+                de: "Ich bin glücklich / freue mich",
+                note: "Perfekt, um deiner Familie zu zeigen, wie sehr du dich freust, bei ihnen zu sein: 'Ana fer7an/a bzzaf!'"
+              },
+              {
+                id: "p5_2",
+                ar: "عيان / عيانة شوية",
+                tr: "3eyan (m) / 3eyana (w) shwiya",
+                de: "Ich bin ein bisschen müde",
+                note: "Sehr nützlich nach einer langen Reise oder einem heißen Tag!"
+              },
+              {
+                id: "p5_3",
+                ar: "ما تقلقش / ما تقلقيش",
+                tr: "Ma t9elle9sh (m) / Ma t9ell9ish (w)",
+                de: "Mach dir keine Sorgen / Reg dich nicht auf",
+                note: "'Ma ... sh' umschließt das Verb und macht es zur Verneinung!"
+              },
+              {
+                id: "p5_4",
+                ar: "ماشي مشكل",
+                tr: "Mashi mushkil",
+                de: "Kein Problem",
+                note: "Einer der entspanntesten und wichtigsten Ausdrücke im marokkanischen Alltag."
+              }
+            ],
+            exercises: [
+              {
+                type: "choice",
+                prompt: "Du bist nach dem Flug bei deinen Verwandten angekommen und freust dich riesig. Wie sagst du „Ich bin sehr glücklich“ (als Frau / als Mann)?",
+                options: [
+                  { ar: "أنا فرحان / فرحانة بزاف!", tr: "Ana fer7an / fer7ana bzzaf!", hint: "Ich bin sehr glücklich", correct: true },
+                  { ar: "غالي شوية", tr: "Ghali shwiya", hint: "Etwas teuer", correct: false },
+                  { ar: "بلا سكر", tr: "Bla sukkar", hint: "Ohne Zucker", correct: false }
+                ],
+                explanation: "'Fer7an' (m) / 'Fer7ana' (w) bedeutet glücklich / erfreut."
+              },
+              {
+                type: "builder",
+                prompt: "Baue den Satz: „Kein Problem“",
+                targetAr: "ماشي مشكل",
+                targetTr: "Mashi mushkil",
+                words: [
+                  { ar: "ماشي", tr: "Mashi" },
+                  { ar: "مشكل", tr: "mushkil" },
+                  { ar: "بزاف", tr: "bzzaf" }
+                ]
+              },
+              {
+                type: "cloze",
+                prompt: "Dein Bruder sagt nach einem langen Ausflug: „أنا ___ بزاف“ (Ich bin sehr müde).",
+                sentenceBefore: "أنا",
+                sentenceAfter: "بزاف.",
+                options: [
+                  { ar: "عيان", tr: "3eyan", correct: true },
+                  { ar: "عيانة", tr: "3eyana", correct: false },
+                  { ar: "بنينة", tr: "bnina", correct: false }
+                ],
+                explanation: "Da dein Bruder männlich ist, benutzt man '3eyan' (ohne -a)."
+              }
+            ]
+          },
+          {
+            id: "k5-l2",
+            title: "Pläne & Zukunft (mit „ghadi“)",
+            duration: "6 Min.",
+            phrases: [
+              {
+                id: "p5_5",
+                ar: "غادي نمشي للبحر",
+                tr: "Ghadi nemshi l-lb7er",
+                de: "Ich werde ans Meer gehen / fahren",
+                note: "'Ghadi' vor einem Verb bildet im Darija die Zukunft ('werden / vorhaben'). 'L-b7er' = das Meer."
+              },
+              {
+                id: "p5_6",
+                ar: "غادي نشوف العائلة",
+                tr: "Ghadi nshuf l-3a2ila",
+                de: "Ich werde die Familie besuchen / sehen",
+                note: "'Nshuf' = ich sehe / besuche."
+              },
+              {
+                id: "p5_7",
+                ar: "شنو غادي دير غدا؟",
+                tr: "Shnu ghadi dir ghdda?",
+                de: "Was wirst du morgen machen?",
+                note: "'Shnu' = was? Eine tolle Frage für das Abendessen mit deinen Cousins!"
+              },
+              {
+                id: "p5_8",
+                ar: "بغيت نرتاح شوية",
+                tr: "Bghit nerta7 shwiya",
+                de: "Ich möchte mich ein bisschen ausruhen",
+                note: "'Nerta7' = ich ruhe mich aus."
+              }
+            ],
+            exercises: [
+              {
+                type: "builder",
+                prompt: "Baue die Frage: „Was wirst du morgen machen?“",
+                targetAr: "شنو غادي دير غدا؟",
+                targetTr: "Shnu ghadi dir ghdda?",
+                words: [
+                  { ar: "شنو", tr: "Shnu" },
+                  { ar: "غادي", tr: "ghadi" },
+                  { ar: "دير", tr: "dir" },
+                  { ar: "غدا؟", tr: "ghdda?" }
+                ]
+              },
+              {
+                type: "choice",
+                prompt: "Wie bildest du im Darija die Zukunft („Ich werde ...“)?",
+                options: [
+                  { ar: "غادي + الفعل", tr: "Mit 'ghadi' vor dem Verb (z. B. ghadi nemshi)", correct: true },
+                  { ar: "بلا + الفعل", tr: "Mit 'bla' (ohne)", correct: false },
+                  { ar: "فين + الفعل", tr: "Mit 'fin' (wo)", correct: false }
+                ],
+                explanation: "'Ghadi' zeigt an, dass du etwas vorhast oder gleich tun wirst."
+              },
+              {
+                type: "listening",
+                audioAr: "غادي نشوف العائلة",
+                audioTr: "Ghadi nshuf l-3a2ila",
+                prompt: "Was hat die Person vor?",
+                options: [
+                  { text: "Sie wird die Familie besuchen / sehen", correct: true },
+                  { text: "Sie möchte ein Taxi nehmen", correct: false },
+                  { text: "Sie kauft Orangen auf dem Markt", correct: false },
+                  { text: "Sie hat es nicht verstanden", correct: false }
+                ]
+              }
+            ]
+          },
+          {
+            id: "k5-l3",
+            title: "Hilfe, Nachfragen & Abschied",
+            duration: "6 Min.",
+            phrases: [
+              {
+                id: "p5_9",
+                ar: "عافاك عاوني / عاونيني",
+                tr: "3afak 3awenni (m) / 3awnini (w)",
+                de: "Bitte hilf mir",
+                note: "Wird auch oft geschrieben/gesprochen als '3awenni' (an einen Mann) / '3awnini' (an eine Frau)."
+              },
+              {
+                id: "p5_10",
+                ar: "ما فهمتش، عاود عافاك",
+                tr: "Ma fhemtsh, 3awed 3afak",
+                de: "Ich habe es nicht verstanden, wiederhole es bitte",
+                note: "Super hilfreich beim Lernen! '3awed' = wiederhole."
+              },
+              {
+                id: "p5_11",
+                ar: "هضر بشوية، عافاك",
+                tr: "Hḍer b-shwiya, 3afak",
+                de: "Sprich bitte langsam",
+                note: "'B-shwiya' = langsam / vorsichtig."
+              },
+              {
+                id: "p5_12",
+                ar: "بسلامة، تهلا فراسك!",
+                tr: "B-slama, thalla f-rasek!",
+                de: "Tschüss, pass auf dich auf!",
+                note: "'Thalla f-rasek' (an eine Frau: 'thallay f-rasek') heißt wörtlich 'kümmere dich um deinen Kopf/dich selbst' – ein sehr herzlicher marokkanischer Abschied!"
+              }
+            ],
+            exercises: [
+              {
+                type: "choice",
+                prompt: "Deine Tante erzählt sehr schnell auf Darija und du kommst nicht ganz mit. Wie bittest du sie höflich, langsamer zu sprechen?",
+                options: [
+                  { ar: "ما فهمتش، هضري بشوية عافاك", tr: "Ma fhemtsh, hḍri b-shwiya 3afak", hint: "Ich habe nicht verstanden, sprich bitte langsam", correct: true },
+                  { ar: "بشحال هذا؟", tr: "Bchhal hada?", hint: "Wie viel kostet das?", correct: false },
+                  { ar: "وقف هنا", tr: "W9ef hna", hint: "Halte hier an", correct: false }
+                ],
+                explanation: "'Ma fhemtsh' (ich habe nicht verstanden) + 'b-shwiya' (langsam) hilft dir in jedem Gespräch!"
+              },
+              {
+                type: "builder",
+                prompt: "Baue den herzlichen Abschied: „Tschüss, pass auf dich auf!“",
+                targetAr: "بسلامة، تهلا فراسك!",
+                targetTr: "B-slama, thalla f-rasek!",
+                words: [
+                  { ar: "بسلامة،", tr: "B-slama," },
+                  { ar: "تهلا", tr: "thalla" },
+                  { ar: "فراسك!", tr: "f-rasek!" }
+                ]
+              },
+              {
+                type: "speaking",
+                prompt: "Verabschiede dich herzlich auf Darija:",
+                targetAr: "بسلامة تهلا فراسك",
+                targetTr: "B-slama, thalla f-rasek",
+                targetDe: "Tschüss, pass auf dich auf"
+              }
+            ]
+          }
+        ],
+        summary: {
+          grammarTips: [
+            {
+              title: "1. Verneinung mit „Ma ... sh“",
+              text: "Um ein Verb zu verneinen, umklammert man es im Darija mit <strong>ma</strong> davor und <strong>-sh</strong> dahinter: <em>Fhemt</em> (ich habe verstanden) → <strong>Ma fhemtsh</strong> (ich habe nicht verstanden)."
+            },
+            {
+              title: "2. Zukunft mit „Ghadi“",
+              text: "Für Pläne in der Zukunft setzt du einfach <strong>ghadi</strong> vor das Verb: <em>Ghadi nemshi l-lb7er</em> (Ich werde ans Meer gehen)."
+            },
+            {
+              title: "3. Herzliche Abschiede",
+              text: "Neben <strong>B-slama</strong> (Tschüss) verabschiedet man sich in der Familie immer mit guten Wünschen wie <strong>Thalla f-rasek</strong> (Pass auf dich auf) oder <strong>Allah y3awnek</strong> (Gott helfe dir)."
+            }
+          ]
+        },
+        chapterQuiz: [
+          {
+            type: "choice",
+            prompt: "Wie sagst du: „Ich habe es nicht verstanden, wiederhole es bitte“?",
+            options: [
+              { ar: "ما فهمتش، عاود عافاك", tr: "Ma fhemtsh, 3awed 3afak", correct: true },
+              { ar: "أنا فرحان بزاف", tr: "Ana fer7an bzzaf", correct: false },
+              { ar: "غادي نمشي للبحر", tr: "Ghadi nemshi l-lb7er", correct: false }
+            ],
+            explanation: "'Ma fhemtsh' = ich habe nicht verstanden, '3awed' = wiederhole."
+          },
+          {
+            type: "builder",
+            prompt: "Baue den Satz: „Ich werde ans Meer gehen“",
+            targetAr: "غادي نمشي للبحر",
+            targetTr: "Ghadi nemshi l-lb7er",
+            words: [
+              { ar: "غادي", tr: "Ghadi" },
+              { ar: "نمشي", tr: "nemshi" },
+              { ar: "للبحر", tr: "l-lb7er" }
+            ]
+          },
+          {
+            type: "listening",
+            audioAr: "ماشي مشكل",
+            audioTr: "Mashi mushkil",
+            prompt: "Höre zu: Was bedeutet das?",
+            options: [
+              { text: "Kein Problem", correct: true },
+              { text: "Ich bin sehr müde", correct: false },
+              { text: "Was machst du morgen?", correct: false },
+              { text: "Hilf mir bitte", correct: false }
+            ]
+          },
+          {
+            type: "cloze",
+            prompt: "Wie verabschiedest du dich herzlich: „Tschüss, pass auf dich auf!“",
+            sentenceBefore: "بسلامة،",
+            sentenceAfter: "!",
+            options: [
+              { ar: "تهلا فراسك", tr: "thalla f-rasek", correct: true },
+              { ar: "كاس د أتاي", tr: "kas d-atay", correct: false },
+              { ar: "سير نيشان", tr: "sir nichan", correct: false }
+            ],
+            explanation: "'Thalla f-rasek' bedeutet 'pass auf dich auf'."
+          },
+          {
+            type: "choice",
+            prompt: "Wie sagst du als Frau: „Ich bin ein bisschen müde“?",
+            options: [
+              { ar: "أنا عيانة شوية", tr: "Ana 3eyana shwiya", correct: true },
+              { ar: "أنا عيان شوية", tr: "Ana 3eyan shwiya", correct: false },
+              { ar: "أنا فرحانة بزاف", tr: "Ana fer7ana bzzaf", correct: false }
+            ],
+            explanation: "Die weibliche Form von müde ist '3eyana'."
+          },
+          {
+            type: "builder",
+            prompt: "Frage: „Was wirst du morgen machen?“",
+            targetAr: "شنو غادي دير غدا؟",
+            targetTr: "Shnu ghadi dir ghdda?",
+            words: [
+              { ar: "شنو", tr: "Shnu" },
+              { ar: "غادي", tr: "ghadi" },
+              { ar: "دير", tr: "dir" },
+              { ar: "غدا؟", tr: "ghdda?" }
+            ]
+          },
+          {
+            type: "choice",
+            prompt: "Was bedeutet „Hḍer b-shwiya, 3afak“?",
+            options: [
+              { ar: "هضر بشوية، عافاك", tr: "Sprich bitte langsam", correct: true },
+              { ar: "هضر بشوية، عافاك", tr: "Ich möchte mich ausruhen", correct: false },
+              { ar: "هضر بشوية، عافاك", tr: "Mach dir keine Sorgen", correct: false }
+            ],
+            explanation: "'Hḍer' = sprich, 'b-shwiya' = langsam."
+          },
+          {
+            type: "choice",
+            prompt: "Welche zwei Elemente verneinen im Darija ein Verb (wie in „ma fhemtsh“)?",
+            options: [
+              { ar: "ما ... ش", tr: "ma ... -sh", correct: true },
+              { ar: "غادي ...", tr: "ghadi ...", correct: false },
+              { ar: "واش ...", tr: "wash ...", correct: false }
+            ],
+            explanation: "'Ma' vor dem Verb und '-sh' am Ende bilden die Standardverneinung."
+          }
+        ]
+      }
+    ];
+
+    /**
+     * ============================================================================
+     * 2. STATE MANAGEMENT & LOCALSTORAGE PERSISTENCE
+     * ============================================================================
+     */
+    const STORAGE_KEY = 'darija_bil_3arabiya_state_v1';
+
+    const defaultState = {
+      completedLessons: [],     // e.g. ['k1-l1', 'k1-l2']
+      completedQuizzes: [],     // e.g. ['kapitel-1']
+      masteredPhrases: [],      // e.g. ['p1_1', 'p1_2']
+      streak: 0,
+      lastStudyDate: null,      // 'YYYY-MM-DD'
+      dailyCompletedDate: null, // 'YYYY-MM-DD'
+      xp: 0,
+      showTransliteration: true,
+      customChapters: []        // Appended chapters imported by user
+    };
+
+    let appState = loadState();
+    let activeSession = null; // Holds current lesson / daily / quiz session
+    let arabicVoices = [];
+    let hasArabicVoice = false;
+    let activeRecognition = null;
+
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return { ...defaultState };
+        const parsed = JSON.parse(raw);
+        return { ...defaultState, ...parsed };
+      } catch (e) {
+        console.warn('Fehler beim Laden des Speicherstands:', e);
+        return { ...defaultState };
+      }
+    }
+
+    function saveState() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(appState));
+      } catch (e) {
+        console.warn('Fehler beim Speichern:', e);
+      }
+      updateHeaderStats();
+    }
+
+    function getAllChapters() {
+      return [...DEFAULT_CURRICULUM, ...(appState.customChapters || [])];
+    }
+
+    function getTodayISO() {
+      const now = new Date();
+      return now.toISOString().split('T')[0];
+    }
+
+    function getYesterdayISO() {
+      const d = new Date();
+      d.setDate(d.getDate() - 1);
+      return d.toISOString().split('T')[0];
+    }
+
+    function recordDailyActivity(earnedXp = 20) {
+      const today = getTodayISO();
+      const yesterday = getYesterdayISO();
+
+      if (appState.lastStudyDate !== today) {
+        if (appState.lastStudyDate === yesterday) {
+          appState.streak = (appState.streak || 0) + 1;
+        } else {
+          appState.streak = 1;
+        }
+        appState.lastStudyDate = today;
+      }
+      appState.xp = (appState.xp || 0) + earnedXp;
+      saveState();
+    }
+
+    /**
+     * ============================================================================
+     * 3. AUDIO (TEXT-TO-SPEECH) & SPRACHEINGABE (SPEECH RECOGNITION)
+     * ============================================================================
+     */
+    function initVoices() {
+      if (!('speechSynthesis' in window)) return;
+      const load = () => {
+        const voices = window.speechSynthesis.getVoices();
+        arabicVoices = voices.filter(v => v.lang && v.lang.toLowerCase().startsWith('ar'));
+        hasArabicVoice = arabicVoices.length > 0;
+      };
+      load();
+      window.speechSynthesis.onvoiceschanged = load;
+    }
+
+    function speakDarija(text, rate = 0.92) {
+      if (!('speechSynthesis' in window)) {
+        showToast('Dein Browser unterstützt leider keine Sprachausgabe.', 'info');
+        return;
+      }
+      window.speechSynthesis.cancel();
+
+      const cleanText = text.replace(/\//g, ' ، ');
+      const utterance = new SpeechSynthesisUtterance(cleanText);
+
+      // Prefer Moroccan Arabic (ar-MA), fallback to any Arabic voice
+      const maVoice = arabicVoices.find(v => v.lang.toLowerCase() === 'ar-ma');
+      const fallbackAr = arabicVoices[0];
+
+      if (maVoice) {
+        utterance.voice = maVoice;
+        utterance.lang = 'ar-MA';
+      } else if (fallbackAr) {
+        utterance.voice = fallbackAr;
+        utterance.lang = fallbackAr.lang;
+      } else {
+        utterance.lang = 'ar-MA';
+      }
+
+      utterance.rate = rate;
+      utterance.pitch = 1.0;
+
+      utterance.onerror = () => {
+        if (!hasArabicVoice) {
+          showToast('Hinweis: Auf diesem Gerät ist keine arabische Stimme installiert. Nutze gerne Schrift & Lautschrift!', 'info');
+        }
+      };
+
+      window.speechSynthesis.speak(utterance);
+    }
+
+    /**
+     * Normalizes Arabic script for forgiving pronunciation matching:
+     * removes tashkeel/diacritics, punctuation, unifies alif & ya forms.
+     */
+    function normalizeArabic(str) {
+      if (!str) return '';
+      return str
+        .replace(/[\u064B-\u065F\u0670]/g, '') // Remove Arabic diacritics
+        .replace(/[؟?!.,،؛:"'()\-]/g, ' ')     // Remove punctuation
+        .replace(/[أإآ]/g, 'ا')                // Normalize Alif
+        .replace(/ى/g, 'ي')                    // Normalize Alif Maqsura
+        .replace(/ة/g, 'ه')                    // Normalize Ta Marbuta gently
+        .replace(/\s+/g, ' ')
+        .trim();
+    }
+
+    function isSpeechRecognitionSupported() {
+      return Boolean(window.SpeechRecognition || window.webkitSpeechRecognition);
+    }
+
+    /**
+     * ============================================================================
+     * 4. UI HELPERS: TOASTS, CLIPBOARD, TRANSLITERATION TOGGLE
+     * ============================================================================
+     */
+    function showToast(message, type = 'success') {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      const bg = type === 'success'
+        ? 'bg-zellige-700 text-white border-zellige-500'
+        : type === 'warning'
+        ? 'bg-terracotta-600 text-white border-terracotta-500'
+        : 'bg-slate-800 text-white border-slate-700';
+
+      toast.className = `${bg} border px-4 py-3 rounded-2xl shadow-lg text-sm font-medium pointer-events-auto animate-step flex items-center gap-2`;
+      toast.innerHTML = `<span>${type === 'success' ? '✅' : type === 'warning' ? '⚠️' : '💡'}</span><span>${message}</span>`;
+      container.appendChild(toast);
+
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transition = 'opacity 0.3s ease';
+        setTimeout(() => toast.remove(), 300);
+      }, 3600);
+    }
+
+    function copyTextToClipboard(text, successMsg = 'In die Zwischenablage kopiert!') {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand('copy');
+        showToast(successMsg, 'success');
+      } catch (err) {
+        showToast('Kopieren fehlgeschlagen. Bitte markiere den Text manuell.', 'warning');
+      }
+      document.body.removeChild(textarea);
+    }
+
+    function toggleTransliteration() {
+      appState.showTransliteration = !appState.showTransliteration;
+      saveState();
+      updateTranslitButton();
+      // Re-render current view seamlessly
+      if (activeSession) {
+        renderSessionStep();
+      } else {
+        renderDashboard();
+      }
+      showToast(
+        appState.showTransliteration
+          ? 'Lautschrift eingeblendet'
+          : 'Lautschrift ausgeblendet – jetzt trainierst du reine arabische Schrift!',
+        'info'
+      );
+    }
+
+    function updateTranslitButton() {
+      const btn = document.getElementById('toggle-translit-btn');
+      const indicator = document.getElementById('translit-indicator');
+      const label = document.getElementById('translit-label');
+      if (appState.showTransliteration) {
+        btn.className = 'flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs sm:text-sm font-semibold border transition-all cursor-pointer bg-saffron-50 text-saffron-600 border-saffron-400/50';
+        indicator.className = 'w-2 h-2 rounded-full bg-saffron-500';
+        label.textContent = 'AN';
+      } else {
+        btn.className = 'flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs sm:text-sm font-semibold border transition-all cursor-pointer bg-slate-100 text-slate-600 border-slate-300';
+        indicator.className = 'w-2 h-2 rounded-full bg-slate-400';
+        label.textContent = 'AUS';
+      }
+    }
+
+    function updateHeaderStats() {
+      // Check if streak expired (more than 1 day gap)
+      const today = getTodayISO();
+      const yesterday = getYesterdayISO();
+      let displayStreak = appState.streak || 0;
+      if (appState.lastStudyDate && appState.lastStudyDate !== today && appState.lastStudyDate !== yesterday) {
+        displayStreak = 0;
+      }
+
+      document.getElementById('stat-streak').textContent = displayStreak;
+      document.getElementById('stat-phrases').textContent = (appState.masteredPhrases || []).length;
+      document.getElementById('stat-xp').textContent = appState.xp || 0;
+    }
+
+    /**
+     * Helper to render transliteration respecting global toggle + optional "Spicken" button
+     */
+    function renderTranslitBlock(trText, uniqueId, extraClasses = 'text-sm text-slate-600') {
+      if (!trText) return '';
+      if (appState.showTransliteration) {
+        return `<p class="${extraClasses} font-medium">${trText}</p>`;
+      }
+      return `
+        <div class="inline-flex items-center gap-2">
+          <span id="peek-text-${uniqueId}" class="hidden ${extraClasses} font-medium bg-saffron-50 text-saffron-600 px-2.5 py-0.5 rounded-lg border border-saffron-200">${trText}</span>
+          <button type="button" onclick="togglePeek('${uniqueId}', this)"
+            class="text-xs text-slate-500 hover:text-zellige-700 bg-sand-100 hover:bg-sand-200 px-2.5 py-1 rounded-lg transition-colors cursor-pointer">
+            👁️ Lautschrift spicken
+          </button>
+        </div>
+      `;
+    }
+
+    function togglePeek(uniqueId, btn) {
+      const el = document.getElementById(`peek-text-${uniqueId}`);
+      if (!el) return;
+      const isHidden = el.classList.contains('hidden');
+      if (isHidden) {
+        el.classList.remove('hidden');
+        btn.textContent = '🙈 Ausblenden';
+      } else {
+        el.classList.add('hidden');
+        btn.textContent = '👁️ Lautschrift spicken';
+      }
+    }
+
+    function goHome() {
+      if (activeRecognition) {
+        try { activeRecognition.abort(); } catch (e) {}
+        activeRecognition = null;
+      }
+      activeSession = null;
+      renderDashboard();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /**
+     * ============================================================================
+     * 5. DASHBOARD VIEW (TÄGLICHE LERNEINHEIT + KAPITEL-ÜBERSICHT)
+     * ============================================================================
+     */
+    function renderDashboard() {
+      const main = document.getElementById('app-main');
+      const chapters = getAllChapters();
+      const today = getTodayISO();
+      const isDailyDone = appState.dailyCompletedDate === today;
+
+      // Determine next uncompleted lesson for Daily Unit preview
+      let nextLessonInfo = null;
+      for (const ch of chapters) {
+        for (const l of ch.lessons) {
+          if (!appState.completedLessons.includes(l.id)) {
+            nextLessonInfo = { chapter: ch, lesson: l };
+            break;
+          }
+        }
+        if (nextLessonInfo) break;
+      }
+
+      const totalLessonsCount = chapters.reduce((acc, ch) => acc + ch.lessons.length, 0);
+      const completedLessonsCount = appState.completedLessons.length;
+      const overallPct = totalLessonsCount > 0 ? Math.round((completedLessonsCount / totalLessonsCount) * 100) : 0;
+
+      main.innerHTML = `
+        <!-- Hero: Tägliche Lerneinheit -->
+        <section class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-zellige-700 via-zellige-600 to-zellige-800 text-white p-6 sm:p-8 shadow-lg mb-8">
+          <div class="zellige-pattern absolute inset-0 pointer-events-none"></div>
+          <div class="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+            <div class="max-w-xl">
+              <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-xs px-3 py-1 rounded-full text-xs font-semibold text-saffron-400 mb-3">
+                <span>${isDailyDone ? '🎉 Heutiges Tagesziel geschafft!' : '☀️ Tägliche Lerneinheit • ca. 6 Min.'}</span>
+              </div>
+              <h1 class="font-display text-2xl sm:text-3xl font-extrabold tracking-tight mb-2">
+                ${isDailyDone ? 'Super gemacht heute! Bereit für eine Bonus-Runde?' : 'Deine heutige Darija-Einheit wartet'}
+              </h1>
+              <p class="text-zellige-100 text-sm sm:text-base leading-relaxed mb-4">
+                ${
+                  nextLessonInfo
+                    ? `Kombiniert neue Ausdrücke aus <strong>Kapitel ${nextLessonInfo.chapter.number}: ${nextLessonInfo.lesson.title}</strong> mit einer gezielten Wiederholung bereits gelernter Sätze.`
+                    : `Du hast alle aktuellen Lektionen abgeschlossen! Diese Einheit trainiert deinen gesamten Wortschatz im bunten Mix.`
+                }
+              </p>
+              <div class="flex flex-wrap items-center gap-3">
+                <button onclick="startDailyUnit()"
+                  class="px-6 py-3.5 rounded-2xl bg-terracotta-600 hover:bg-terracotta-500 active:scale-[0.99] text-white font-bold text-sm sm:text-base shadow-md transition-all flex items-center gap-2 cursor-pointer">
+                  <span>▶️</span>
+                  <span>${isDailyDone ? 'Weitere Tages-Übung starten' : 'Heutige Lerneinheit starten'}</span>
+                </button>
+                <div class="text-xs text-zellige-100 bg-white/10 px-3.5 py-2.5 rounded-2xl">
+                  Gesamtfortschritt: <strong>${completedLessonsCount}/${totalLessonsCount} Lektionen (${overallPct}%)</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- Decorative Moroccan Greeting Card -->
+            <div class="bg-white/10 backdrop-blur-xs border border-white/15 rounded-2xl p-5 lg:w-72 shrink-0">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs uppercase tracking-wider text-saffron-400 font-bold">Ausdruck des Tages</span>
+                <button onclick="speakDarija('مرحبا بيك في المغرب')" class="text-xs bg-white/15 hover:bg-white/25 px-2.5 py-1 rounded-lg cursor-pointer" title="Anhören">🔊</button>
+              </div>
+              <p class="arabic-text text-2xl font-bold text-white mb-1">مرحبا بيك في المغرب</p>
+              ${appState.showTransliteration ? `<p class="text-xs text-saffron-400 font-medium mb-1">Mer7ba bik f-l-Maghrib</p>` : ''}
+              <p class="text-xs text-zellige-100">Herzlich willkommen in Marokko!</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section Header: Kapitelübersicht -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-5">
+          <div>
+            <h2 class="font-display text-xl sm:text-2xl font-extrabold text-slate-800">Dein Lernpfad: Kapitel &amp; Themen</h2>
+            <p class="text-sm text-slate-500">Arbeite dich Schritt für Schritt durch die Kapitel – am Ende wartet jeweils ein Spickzettel &amp; Test.</p>
+          </div>
+        </div>
+
+        <!-- Chapters List -->
+        <div class="space-y-6">
+          ${chapters.map((chapter, idx) => renderChapterCard(chapter, idx)).join('')}
+        </div>
+
+        <!-- Extensibility Banner (for future chapters 6, 7+) -->
+        <section class="mt-10 rounded-3xl bg-white border-2 border-dashed border-sand-300 p-6 sm:p-8 text-center">
+          <div class="w-12 h-12 rounded-2xl bg-saffron-100 text-saffron-600 flex items-center justify-center text-2xl mx-auto mb-3">
+            🧩
+          </div>
+          <h3 class="font-display text-lg sm:text-xl font-bold text-slate-800 mb-2">
+            Dein Lernpfad wächst mit dir mit!
+          </h3>
+          <p class="text-sm text-slate-600 max-w-xl mx-auto mb-4">
+            Wenn du bei Kapitel ${chapters.length} angekommen bist oder dir spezielle Themen (z. B. Gespräche mit Großeltern, Arzt/Apotheke, Restaurant, Dialekt-Besonderheiten) wünschst, kannst du jederzeit neue Kapitel hinzufügen.
+          </p>
+          <button onclick="openExtendModal()"
+            class="inline-flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-zellige-600 hover:bg-zellige-700 text-white text-sm font-semibold shadow-xs transition-colors cursor-pointer">
+            <span>➕</span>
+            <span>Neue Kapitel importieren / Vorlage ansehen</span>
+          </button>
+        </section>
+      `;
+    }
+
+    function renderChapterCard(chapter) {
+      const totalLessons = chapter.lessons.length;
+      const doneLessons = chapter.lessons.filter(l => appState.completedLessons.includes(l.id)).length;
+      const quizDone = appState.completedQuizzes.includes(chapter.id);
+      const isChapterComplete = doneLessons === totalLessons && quizDone;
+      const progressPct = Math.round(((doneLessons + (quizDone ? 1 : 0)) / (totalLessons + 1)) * 100);
+
+      return `
+        <article class="bg-white rounded-3xl border ${isChapterComplete ? 'border-zellige-500/40' : 'border-sand-200'} shadow-xs overflow-hidden transition-all">
+          <div class="p-5 sm:p-6">
+            <!-- Top Row: Chapter Badge, Title, Progress -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5">
+              <div class="flex items-start gap-4">
+                <div class="w-13 h-13 rounded-2xl ${isChapterComplete ? 'bg-zellige-600 text-white' : 'bg-sand-100 text-slate-800'} flex flex-col items-center justify-center shrink-0 px-3 py-2 border border-sand-200">
+                  <span class="text-xl leading-none">${chapter.icon || '📖'}</span>
+                  <span class="text-[10px] font-bold uppercase tracking-wider mt-1 ${isChapterComplete ? 'text-saffron-400' : 'text-slate-500'}">Kap. ${chapter.number}</span>
+                </div>
+                <div>
+                  <div class="flex items-center flex-wrap gap-2">
+                    <h3 class="font-display text-lg sm:text-xl font-bold text-slate-800">${chapter.title}</h3>
+                    ${isChapterComplete ? '<span class="text-xs font-bold bg-zellige-50 text-zellige-700 border border-zellige-200 px-2.5 py-0.5 rounded-full">🏆 Abgeschlossen</span>' : ''}
+                  </div>
+                  <p class="text-sm text-slate-500 mt-0.5">${chapter.subtitle}</p>
+                </div>
+              </div>
+
+              <!-- Progress Pill -->
+              <div class="sm:text-right shrink-0">
+                <div class="text-xs font-semibold text-slate-600 mb-1">
+                  ${doneLessons}/${totalLessons} Lektionen ${quizDone ? '• Quiz ✅' : ''}
+                </div>
+                <div class="w-full sm:w-36 h-2 bg-sand-100 rounded-full overflow-hidden">
+                  <div class="h-full bg-zellige-600 rounded-full transition-all duration-500" style="width: ${progressPct}%"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Lessons Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-5">
+              ${chapter.lessons.map((lesson, lIdx) => {
+                const isDone = appState.completedLessons.includes(lesson.id);
+                return `
+                  <button onclick="startLesson('${chapter.id}', '${lesson.id}')"
+                    class="text-left p-4 rounded-2xl border transition-all flex items-start justify-between gap-3 cursor-pointer group
+                    ${isDone
+                      ? 'bg-zellige-50/60 border-zellige-200 hover:bg-zellige-50'
+                      : 'bg-sand-50/70 border-sand-200 hover:border-zellige-500 hover:bg-white'}">
+                    <div>
+                      <div class="flex items-center gap-2 mb-1">
+                        <span class="text-xs font-bold ${isDone ? 'text-zellige-700' : 'text-terracotta-600'}">
+                          Lektion ${chapter.number}.${lIdx + 1}
+                        </span>
+                        <span class="text-xs text-slate-400">• ${lesson.duration || '5 Min.'}</span>
+                      </div>
+                      <p class="font-semibold text-sm text-slate-800 group-hover:text-zellige-700 transition-colors">
+                        ${lesson.title}
+                      </p>
+                      <p class="text-xs text-slate-500 mt-1">${lesson.phrases.length} Ausdrücke</p>
+                    </div>
+                    <span class="w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shrink-0
+                      ${isDone ? 'bg-zellige-600 text-white' : 'bg-white border border-sand-300 text-slate-400 group-hover:border-zellige-600 group-hover:text-zellige-600'}">
+                      ${isDone ? '✓' : '▶'}
+                    </span>
+                  </button>
+                `;
+              }).join('')}
+            </div>
+
+            <!-- Bottom Chapter Actions: Spickzettel & Abschluss-Test -->
+            <div class="pt-4 border-t border-sand-100 flex flex-wrap items-center justify-between gap-3">
+              <button onclick="openSummaryModal('${chapter.id}')"
+                class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-sand-100 hover:bg-sand-200 text-slate-700 text-xs sm:text-sm font-semibold transition-colors cursor-pointer">
+                <span>📋</span>
+                <span>Kapitel-Zusammenfassung &amp; Spickzettel</span>
+              </button>
+
+              <button onclick="startChapterQuiz('${chapter.id}')"
+                class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all cursor-pointer
+                ${quizDone
+                  ? 'bg-saffron-50 text-saffron-600 border border-saffron-400/50 hover:bg-saffron-100'
+                  : 'bg-terracotta-50 text-terracotta-700 border border-terracotta-200 hover:bg-terracotta-600 hover:text-white'}">
+                <span>🏆</span>
+                <span>${quizDone ? 'Abschluss-Test wiederholen' : 'Kapitel-Abschluss-Test starten'}</span>
+              </button>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    /**
+     * ============================================================================
+     * 6. SESSION BUILDERS (LEKTION, TÄGLICHE LERNEINHEIT, KAPITEL-ABSCHLUSS-TEST)
+     * ============================================================================
+     */
+    function startLesson(chapterId, lessonId) {
+      const chapter = getAllChapters().find(c => c.id === chapterId);
+      if (!chapter) return;
+      const lesson = chapter.lessons.find(l => l.id === lessonId);
+      if (!lesson) return;
+
+      // Interleave intro cards for phrases with interactive exercises
+      const steps = [];
+      lesson.phrases.forEach((phrase, idx) => {
+        steps.push({
+          type: 'intro',
+          phrase
+        });
+        // Add an exercise after every 1-2 intro cards for engaging pacing
+        if (lesson.exercises[idx]) {
+          steps.push(lesson.exercises[idx]);
+        }
+      });
+
+      // Append any remaining exercises
+      if (lesson.exercises.length > lesson.phrases.length) {
+        for (let i = lesson.phrases.length; i < lesson.exercises.length; i++) {
+          steps.push(lesson.exercises[i]);
+        }
+      }
+
+      activeSession = {
+        mode: 'lesson',
+        title: `Kapitel ${chapter.number}: ${lesson.title}`,
+        chapterId: chapter.id,
+        lessonId: lesson.id,
+        phraseIds: lesson.phrases.map(p => p.id),
+        steps,
+        currentIndex: 0,
+        correctCount: 0,
+        quizTotal: steps.filter(s => s.type !== 'intro').length,
+        stepAnswered: false,
+        builderSelection: []
+      };
+
+      renderSessionStep();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function startChapterQuiz(chapterId) {
+      const chapter = getAllChapters().find(c => c.id === chapterId);
+      if (!chapter || !chapter.chapterQuiz) return;
+
+      const allPhraseIds = chapter.lessons.flatMap(l => l.phrases.map(p => p.id));
+
+      activeSession = {
+        mode: 'quiz',
+        title: `Abschluss-Test: Kapitel ${chapter.number} – ${chapter.title}`,
+        chapterId: chapter.id,
+        phraseIds: allPhraseIds,
+        steps: chapter.chapterQuiz,
+        currentIndex: 0,
+        correctCount: 0,
+        quizTotal: chapter.chapterQuiz.length,
+        stepAnswered: false,
+        builderSelection: []
+      };
+
+      renderSessionStep();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function startDailyUnit() {
+      const chapters = getAllChapters();
+      const steps = [];
+      const learnedPhraseIds = [];
+
+      // 1. Find next uncompleted lesson
+      let nextLesson = null;
+      for (const ch of chapters) {
+        for (const l of ch.lessons) {
+          if (!appState.completedLessons.includes(l.id)) {
+            nextLesson = l;
+            break;
+          }
+        }
+        if (nextLesson) break;
+      }
+
+      if (nextLesson) {
+        // Take first 2 new phrases + 2 exercises from next lesson
+        nextLesson.phrases.slice(0, 2).forEach(p => {
+          steps.push({ type: 'intro', phrase: p, badge: 'Neu für dich' });
+          learnedPhraseIds.push(p.id);
+        });
+        nextLesson.exercises.slice(0, 2).forEach(ex => steps.push(ex));
+      }
+
+      // 2. Gather review exercises from completed lessons (or chapter 1 if brand new)
+      const reviewPool = [];
+      chapters.forEach(ch => {
+        ch.lessons.forEach(l => {
+          if (appState.completedLessons.includes(l.id) || !nextLesson) {
+            l.exercises.forEach(ex => reviewPool.push(ex));
+          }
+        });
+      });
+
+      // Fallback if user has 0 completed lessons: add 2 more exercises from nextLesson
+      if (reviewPool.length === 0 && nextLesson) {
+        nextLesson.exercises.slice(2, 4).forEach(ex => steps.push(ex));
+      } else {
+        // Shuffle reviewPool and take up to 4 items
+        const shuffled = [...reviewPool].sort(() => Math.random() - 0.5);
+        shuffled.slice(0, 4).forEach(ex => steps.push(ex));
+      }
+
+      activeSession = {
+        mode: 'daily',
+        title: 'Tägliche Lerneinheit',
+        phraseIds: learnedPhraseIds,
+        steps,
+        currentIndex: 0,
+        correctCount: 0,
+        quizTotal: steps.filter(s => s.type !== 'intro').length,
+        stepAnswered: false,
+        builderSelection: []
+      };
+
+      renderSessionStep();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /**
+     * ============================================================================
+     * 7. INTERACTIVE EXERCISE ENGINE RENDERER
+     * ============================================================================
+     */
+    function renderSessionStep() {
+      const main = document.getElementById('app-main');
+      if (!activeSession) return renderDashboard();
+
+      // Check if session finished
+      if (activeSession.currentIndex >= activeSession.steps.length) {
+        renderSessionComplete();
+        return;
+      }
+
+      const step = activeSession.steps[activeSession.currentIndex];
+      const total = activeSession.steps.length;
+      const pct = Math.round(((activeSession.currentIndex) / total) * 100);
+
+      let stepHTML = '';
+      if (step.type === 'intro') {
+        stepHTML = renderIntroCard(step);
+      } else if (step.type === 'choice') {
+        stepHTML = renderChoiceStep(step);
+      } else if (step.type === 'builder') {
+        stepHTML = renderBuilderStep(step);
+      } else if (step.type === 'cloze') {
+        stepHTML = renderClozeStep(step);
+      } else if (step.type === 'listening') {
+        stepHTML = renderListeningStep(step);
+      } else if (step.type === 'speaking') {
+        stepHTML = renderSpeakingStep(step);
+      }
+
+      main.innerHTML = `
+        <div class="max-w-2xl mx-auto">
+          <!-- Top Session Bar -->
+          <div class="flex items-center gap-3 mb-6">
+            <button onclick="goHome()" class="w-10 h-10 rounded-xl bg-white border border-sand-200 hover:bg-sand-100 flex items-center justify-center text-slate-600 font-bold cursor-pointer shrink-0" title="Zurück zur Übersicht">
+              ✕
+            </button>
+            <div class="flex-1">
+              <div class="flex items-center justify-between text-xs font-semibold text-slate-500 mb-1.5">
+                <span class="truncate pr-2">${activeSession.title}</span>
+                <span class="shrink-0">Schritt ${activeSession.currentIndex + 1} von ${total}</span>
+              </div>
+              <div class="w-full h-2.5 bg-sand-200 rounded-full overflow-hidden">
+                <div class="h-full bg-zellige-600 rounded-full transition-all duration-300" style="width: ${pct}%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step Card -->
+          <div class="bg-white rounded-3xl border border-sand-200 shadow-sm p-6 sm:p-8 animate-step">
+            ${stepHTML}
+          </div>
+        </div>
+      `;
+
+      // Auto-play audio for listening exercises gently
+      if (step.type === 'listening' && !activeSession.stepAnswered) {
+        setTimeout(() => speakDarija(step.audioAr, 0.9), 300);
+      }
+    }
+
+    // --- 7.1 LERNKARTE (INTRO) ---
+    function renderIntroCard(step) {
+      const p = step.phrase;
+      return `
+        <div class="text-center">
+          <span class="inline-block text-xs font-bold uppercase tracking-wider bg-zellige-50 text-zellige-700 border border-zellige-200 px-3 py-1 rounded-full mb-5">
+            ${step.badge || 'Neuer Ausdruck'}
+          </span>
+
+          <!-- Large Arabic Script -->
+          <div class="bg-sand-50 border border-sand-200 rounded-2xl p-6 mb-5">
+            <p class="arabic-text text-3xl sm:text-4xl font-bold text-slate-900 mb-3">${p.ar}</p>
+            ${renderTranslitBlock(p.tr, `intro-${p.id}`, 'text-base sm:text-lg text-terracotta-600')}
+          </div>
+
+          <!-- German Translation -->
+          <p class="font-display text-xl sm:text-2xl font-bold text-slate-800 mb-5">
+            „${p.de}“
+          </p>
+
+          <!-- Audio Buttons -->
+          <div class="flex items-center justify-center gap-3 mb-6">
+            <button type="button" onclick="speakDarija('${escapeQuotes(p.ar)}', 0.92)"
+              class="px-4 py-2.5 rounded-xl bg-zellige-600 hover:bg-zellige-700 text-white text-sm font-semibold flex items-center gap-2 shadow-xs cursor-pointer">
+              <span>🔊</span><span>Anhören</span>
+            </button>
+            <button type="button" onclick="speakDarija('${escapeQuotes(p.ar)}', 0.62)"
+              class="px-4 py-2.5 rounded-xl bg-sand-100 hover:bg-sand-200 text-slate-700 text-sm font-semibold flex items-center gap-2 cursor-pointer">
+              <span>🐢</span><span>Langsam</span>
+            </button>
+          </div>
+
+          <!-- Cultural / Grammar Note -->
+          ${p.note ? `
+            <div class="text-left bg-saffron-50 border border-saffron-200 rounded-2xl p-4 mb-6 flex items-start gap-3">
+              <span class="text-lg shrink-0">💡</span>
+              <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">${p.note}</p>
+            </div>
+          ` : ''}
+
+          <button type="button" onclick="advanceStep(true)"
+            class="w-full py-3.5 rounded-2xl bg-zellige-600 hover:bg-zellige-700 text-white font-bold text-base shadow-sm transition-colors cursor-pointer">
+            Verstanden, weiter →
+          </button>
+        </div>
+      `;
+    }
+
+    // --- 7.2 MINI-DIALOG / MULTIPLE CHOICE ---
+    function renderChoiceStep(step) {
+      return `
+        <div>
+          <span class="inline-block text-xs font-bold uppercase tracking-wider bg-terracotta-50 text-terracotta-700 px-3 py-1 rounded-full mb-4">
+            💬 Situation &amp; Auswahl
+          </span>
+          <h2 class="font-display text-lg sm:text-xl font-bold text-slate-800 leading-snug mb-5">
+            ${step.prompt}
+          </h2>
+
+          <div class="space-y-3" id="choice-options">
+            ${step.options.map((opt, idx) => `
+              <button type="button" onclick="handleChoiceSelect(${idx})"
+                id="choice-btn-${idx}"
+                class="w-full text-left p-4 rounded-2xl border-2 border-sand-200 hover:border-zellige-500 bg-sand-50/50 hover:bg-white transition-all flex items-center justify-between gap-4 cursor-pointer">
+                <div>
+                  <p class="arabic-text text-xl sm:text-2xl font-bold text-slate-900">${opt.ar}</p>
+                  ${appState.showTransliteration && opt.tr ? `<p class="text-sm text-slate-600 font-medium mt-0.5">${opt.tr}</p>` : ''}
+                </div>
+                <span onclick="event.stopPropagation(); speakDarija('${escapeQuotes(opt.ar)}')"
+                  class="w-9 h-9 rounded-xl bg-white border border-sand-200 hover:bg-zellige-50 flex items-center justify-center text-sm shrink-0" title="Anhören">
+                  🔊
+                </span>
+              </button>
+            `).join('')}
+          </div>
+
+          <div id="step-feedback" class="hidden mt-5"></div>
+        </div>
+      `;
+    }
+
+    function handleChoiceSelect(selectedIdx) {
+      if (activeSession.stepAnswered) return;
+      activeSession.stepAnswered = true;
+
+      const step = activeSession.steps[activeSession.currentIndex];
+      const chosen = step.options[selectedIdx];
+      const isCorrect = Boolean(chosen.correct);
+
+      if (isCorrect) activeSession.correctCount++;
+      speakDarija(chosen.ar);
+
+      step.options.forEach((opt, idx) => {
+        const btn = document.getElementById(`choice-btn-${idx}`);
+        btn.disabled = true;
+        btn.classList.remove('hover:border-zellige-500', 'hover:bg-white');
+        if (opt.correct) {
+          btn.classList.add('border-zellige-600', 'bg-zellige-50');
+        } else if (idx === selectedIdx && !opt.correct) {
+          btn.classList.add('border-terracotta-600', 'bg-terracotta-50');
+        } else {
+          btn.classList.add('opacity-55');
+        }
+      });
+
+      showStepFeedback(isCorrect, step.explanation || (isCorrect ? 'Richtig!' : 'Nicht ganz – schau dir die markierte Lösung an.'));
+    }
+
+    // --- 7.3 SATZBAU-PUZZLE (WORD ORDER BUILDER) ---
+    function renderBuilderStep(step) {
+      if (!activeSession.shuffledWords) {
+        activeSession.shuffledWords = step.words
+          .map((w, i) => ({ ...w, uid: i }))
+          .sort(() => Math.random() - 0.5);
+      }
+
+      const selectedUids = new Set(activeSession.builderSelection.map(w => w.uid));
+
+      return `
+        <div>
+          <span class="inline-block text-xs font-bold uppercase tracking-wider bg-zellige-50 text-zellige-700 px-3 py-1 rounded-full mb-4">
+            🧩 Satzbau-Puzzle
+          </span>
+          <h2 class="font-display text-lg sm:text-xl font-bold text-slate-800 mb-2">
+            ${step.prompt}
+          </h2>
+          <p class="text-xs text-slate-500 mb-5">Tippe die Darija-Bausteine in der richtigen Reihenfolge an (von rechts nach links).</p>
+
+          <!-- Target Drop Area (RTL) -->
+          <div dir="rtl" class="min-h-20 p-4 rounded-2xl bg-sand-50 border-2 border-dashed border-sand-300 flex flex-wrap items-center gap-2.5 mb-5">
+            ${
+              activeSession.builderSelection.length === 0
+                ? `<span dir="ltr" class="text-xs text-slate-400 mx-auto">Deine ausgewählten Wörter erscheinen hier...</span>`
+                : activeSession.builderSelection.map((w, pos) => `
+                    <button type="button" onclick="removeBuilderWord(${pos})" ${activeSession.stepAnswered ? 'disabled' : ''}
+                      class="px-3.5 py-2 rounded-xl bg-zellige-600 text-white shadow-xs flex flex-col items-center cursor-pointer hover:bg-zellige-700 transition-colors">
+                      <span class="arabic-text text-lg font-bold leading-tight">${w.ar}</span>
+                      ${appState.showTransliteration ? `<span dir="ltr" class="text-[11px] text-zellige-100">${w.tr}</span>` : ''}
+                    </button>
+                  `).join('')
+            }
+          </div>
+
+          <!-- Word Bank -->
+          <div dir="rtl" class="flex flex-wrap justify-center gap-2.5 mb-6">
+            ${activeSession.shuffledWords.map(w => {
+              const isUsed = selectedUids.has(w.uid);
+              return `
+                <button type="button" onclick="addBuilderWord(${w.uid})" ${isUsed || activeSession.stepAnswered ? 'disabled' : ''}
+                  class="px-4 py-2.5 rounded-xl border-2 transition-all flex flex-col items-center cursor-pointer
+                  ${isUsed
+                    ? 'bg-sand-100 border-sand-200 opacity-35 cursor-default'
+                    : 'bg-white border-sand-300 hover:border-zellige-600 shadow-2xs'}">
+                  <span class="arabic-text text-lg font-bold text-slate-900 leading-tight">${w.ar}</span>
+                  ${appState.showTransliteration ? `<span dir="ltr" class="text-xs text-slate-500">${w.tr}</span>` : ''}
+                </button>
+              `;
+            }).join('')}
+          </div>
+
+          ${!activeSession.stepAnswered ? `
+            <button type="button" onclick="checkBuilderAnswer()"
+              ${activeSession.builderSelection.length === 0 ? 'disabled' : ''}
+              class="w-full py-3.5 rounded-2xl font-bold text-base transition-colors cursor-pointer
+              ${activeSession.builderSelection.length === 0
+                ? 'bg-sand-200 text-slate-400 cursor-not-allowed'
+                : 'bg-zellige-600 hover:bg-zellige-700 text-white shadow-sm'}">
+              Antwort prüfen
+            </button>
+          ` : ''}
+
+          <div id="step-feedback" class="hidden mt-5"></div>
+        </div>
+      `;
+    }
+
+    function addBuilderWord(uid) {
+      if (activeSession.stepAnswered) return;
+      const wordObj = activeSession.shuffledWords.find(w => w.uid === uid);
+      if (wordObj) {
+        activeSession.builderSelection.push(wordObj);
+        renderSessionStep();
+      }
+    }
+
+    function removeBuilderWord(pos) {
+      if (activeSession.stepAnswered) return;
+      activeSession.builderSelection.splice(pos, 1);
+      renderSessionStep();
+    }
+
+    function checkBuilderAnswer() {
+      if (activeSession.stepAnswered) return;
+      activeSession.stepAnswered = true;
+
+      const step = activeSession.steps[activeSession.currentIndex];
+      const builtAr = activeSession.builderSelection.map(w => w.ar).join(' ');
+      const isCorrect = normalizeArabic(builtAr) === normalizeArabic(step.targetAr);
+
+      if (isCorrect) activeSession.correctCount++;
+      speakDarija(step.targetAr);
+
+      // Re-render to lock chips, then show feedback
+      renderSessionStep();
+      const solutionHtml = `
+        <div class="mt-2 pt-2 border-t border-black/10">
+          <span class="text-xs font-semibold">Lösung:</span>
+          <span class="arabic-text text-lg font-bold ml-2">${step.targetAr}</span>
+          ${appState.showTransliteration ? `<span class="text-xs ml-2">(${step.targetTr})</span>` : ''}
+        </div>
+      `;
+      showStepFeedback(isCorrect, (isCorrect ? 'Perfekt zusammengesetzt!' : 'Nicht ganz die richtige Reihenfolge.') + solutionHtml);
+    }
+
+    // --- 7.4 LÜCKENTEXT (CLOZE) ---
+    function renderClozeStep(step) {
+      return `
+        <div>
+          <span class="inline-block text-xs font-bold uppercase tracking-wider bg-saffron-50 text-saffron-600 border border-saffron-200 px-3 py-1 rounded-full mb-4">
+            ✍️ Lückentext &amp; Grammatik
+          </span>
+          <h2 class="font-display text-lg sm:text-xl font-bold text-slate-800 mb-5">
+            ${step.prompt}
+          </h2>
+
+          <div dir="rtl" class="bg-sand-50 border border-sand-200 rounded-2xl p-5 text-center mb-6">
+            <p class="arabic-text text-2xl sm:text-3xl font-bold text-slate-900">
+              ${step.sentenceBefore}
+              <span id="cloze-slot" class="inline-block min-w-24 px-3 py-0.5 mx-1 border-b-2 border-terracotta-600 text-terracotta-600">___</span>
+              ${step.sentenceAfter}
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            ${step.options.map((opt, idx) => `
+              <button type="button" onclick="handleClozeSelect(${idx})" id="cloze-btn-${idx}"
+                class="p-4 rounded-2xl border-2 border-sand-200 hover:border-zellige-500 bg-white text-center transition-all cursor-pointer">
+                <p class="arabic-text text-xl font-bold text-slate-900">${opt.ar}</p>
+                ${appState.showTransliteration ? `<p class="text-xs text-slate-500 font-medium mt-1">${opt.tr}</p>` : ''}
+              </button>
+            `).join('')}
+          </div>
+
+          <div id="step-feedback" class="hidden mt-5"></div>
+        </div>
+      `;
+    }
+
+    function handleClozeSelect(selectedIdx) {
+      if (activeSession.stepAnswered) return;
+      activeSession.stepAnswered = true;
+
+      const step = activeSession.steps[activeSession.currentIndex];
+      const chosen = step.options[selectedIdx];
+      const isCorrect = Boolean(chosen.correct);
+
+      if (isCorrect) activeSession.correctCount++;
+
+      const slot = document.getElementById('cloze-slot');
+      if (slot) slot.textContent = chosen.ar;
+
+      const fullSentence = `${step.sentenceBefore} ${chosen.ar} ${step.sentenceAfter}`;
+      speakDarija(fullSentence);
+
+      step.options.forEach((opt, idx) => {
+        const btn = document.getElementById(`cloze-btn-${idx}`);
+        btn.disabled = true;
+        if (opt.correct) {
+          btn.classList.add('border-zellige-600', 'bg-zellige-50');
+        } else if (idx === selectedIdx && !opt.correct) {
+          btn.classList.add('border-terracotta-600', 'bg-terracotta-50');
+        } else {
+          btn.classList.add('opacity-50');
+        }
+      });
+
+      showStepFeedback(isCorrect, step.explanation || '');
+    }
+
+    // --- 7.5 HÖRVERSTEHEN (LISTENING COMPREHENSION) ---
+    function renderListeningStep(step) {
+      return `
+        <div>
+          <span class="inline-block text-xs font-bold uppercase tracking-wider bg-zellige-50 text-zellige-700 px-3 py-1 rounded-full mb-4">
+            🎧 Hörverstehen
+          </span>
+          <h2 class="font-display text-lg sm:text-xl font-bold text-slate-800 mb-5">
+            ${step.prompt}
+          </h2>
+
+          <div class="bg-sand-50 border border-sand-200 rounded-2xl p-6 flex flex-col items-center justify-center mb-6">
+            <div class="flex items-center gap-3">
+              <button type="button" onclick="speakDarija('${escapeQuotes(step.audioAr)}', 0.92)"
+                class="px-5 py-3 rounded-2xl bg-zellige-600 hover:bg-zellige-700 text-white font-bold text-sm flex items-center gap-2 shadow-sm cursor-pointer">
+                <span class="text-lg">🔊</span><span>Abspielen</span>
+              </button>
+              <button type="button" onclick="speakDarija('${escapeQuotes(step.audioAr)}', 0.60)"
+                class="px-4 py-3 rounded-2xl bg-white border border-sand-300 hover:bg-sand-100 text-slate-700 font-semibold text-sm flex items-center gap-2 cursor-pointer">
+                <span>🐢</span><span>Langsam</span>
+              </button>
+            </div>
+            <div id="listening-reveal" class="hidden mt-4 text-center">
+              <p class="arabic-text text-xl font-bold text-slate-900">${step.audioAr}</p>
+              ${appState.showTransliteration ? `<p class="text-xs text-terracotta-600 font-medium">${step.audioTr}</p>` : ''}
+            </div>
+          </div>
+
+          <div class="space-y-2.5">
+            ${step.options.map((opt, idx) => `
+              <button type="button" onclick="handleListeningSelect(${idx})" id="listen-btn-${idx}"
+                class="w-full text-left p-4 rounded-2xl border-2 border-sand-200 hover:border-zellige-500 bg-white font-semibold text-sm sm:text-base text-slate-800 transition-all cursor-pointer">
+                ${opt.text}
+              </button>
+            `).join('')}
+          </div>
+
+          <div id="step-feedback" class="hidden mt-5"></div>
+        </div>
+      `;
+    }
+
+    function handleListeningSelect(selectedIdx) {
+      if (activeSession.stepAnswered) return;
+      activeSession.stepAnswered = true;
+
+      const step = activeSession.steps[activeSession.currentIndex];
+      const chosen = step.options[selectedIdx];
+      const isCorrect = Boolean(chosen.correct);
+
+      if (isCorrect) activeSession.correctCount++;
+
+      const reveal = document.getElementById('listening-reveal');
+      if (reveal) reveal.classList.remove('hidden');
+
+      step.options.forEach((opt, idx) => {
+        const btn = document.getElementById(`listen-btn-${idx}`);
+        btn.disabled = true;
+        if (opt.correct) {
+          btn.classList.add('border-zellige-600', 'bg-zellige-50', 'text-zellige-800');
+        } else if (idx === selectedIdx && !opt.correct) {
+          btn.classList.add('border-terracotta-600', 'bg-terracotta-50', 'text-terracotta-800');
+        } else {
+          btn.classList.add('opacity-50');
+        }
+      });
+
+      showStepFeedback(isCorrect, isCorrect ? 'Super herausgehört!' : 'Schau dir oben den gesprochenen Satz noch einmal an.');
+    }
+
+    // --- 7.6 AUSSPRACHE-CHECK (OPTIONAL SPEECH RECOGNITION) ---
+    function renderSpeakingStep(step) {
+      const supported = isSpeechRecognitionSupported();
+      return `
+        <div class="text-center">
+          <span class="inline-block text-xs font-bold uppercase tracking-wider bg-terracotta-50 text-terracotta-700 px-3 py-1 rounded-full mb-4">
+            🎙️ Aussprache-Check (Optional)
+          </span>
+          <h2 class="font-display text-lg sm:text-xl font-bold text-slate-800 mb-4">
+            ${step.prompt}
+          </h2>
+
+          <div class="bg-sand-50 border border-sand-200 rounded-2xl p-5 mb-5">
+            <p class="arabic-text text-2xl sm:text-3xl font-bold text-slate-900 mb-2">${step.targetAr}</p>
+            ${renderTranslitBlock(step.targetTr, 'speak-target', 'text-base text-terracotta-600')}
+            <p class="text-xs text-slate-500 mt-2">„${step.targetDe}“</p>
+            <button type="button" onclick="speakDarija('${escapeQuotes(step.targetAr)}', 0.85)"
+              class="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-zellige-700 bg-white border border-sand-200 px-3 py-1.5 rounded-xl hover:bg-zellige-50 cursor-pointer">
+              <span>🔊</span><span>Erst noch einmal anhören</span>
+            </button>
+          </div>
+
+          ${
+            supported
+              ? `
+                <div class="my-5 flex flex-col items-center">
+                  <button type="button" id="mic-btn" onclick="startSpeechCheck()"
+                    class="w-18 h-18 rounded-full bg-terracotta-600 hover:bg-terracotta-500 text-white flex items-center justify-center text-3xl shadow-md transition-all cursor-pointer p-5">
+                    🎙️
+                  </button>
+                  <p id="mic-status" class="text-xs font-medium text-slate-500 mt-2.5">Tippe auf das Mikrofon und sprich den Satz</p>
+                  <div id="speech-heard-box" class="hidden mt-3 px-4 py-2 rounded-xl bg-slate-100 text-sm">
+                    Erkannt: <span id="speech-heard-text" class="arabic-text font-bold text-slate-800"></span>
+                  </div>
+                </div>
+              `
+              : `
+                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-4 text-xs text-slate-600 mb-5">
+                  ℹ️ Dein aktueller Browser unterstützt keine direkte arabische Spracherkennung über das Mikrofon. Sprich den Satz gerne laut für dich selbst und klicke dann auf Weiter!
+                </div>
+              `
+          }
+
+          <div id="step-feedback" class="hidden mb-4"></div>
+
+          <button type="button" onclick="skipSpeakingStep()"
+            class="text-xs sm:text-sm font-semibold text-slate-500 hover:text-slate-800 underline underline-offset-4 py-2 cursor-pointer">
+            Überspringen (Gerade nicht sprechen) →
+          </button>
+        </div>
+      `;
+    }
+
+    function startSpeechCheck() {
+      if (activeSession.stepAnswered) return;
+      const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SpeechRec) return;
+
+      const step = activeSession.steps[activeSession.currentIndex];
+      const micBtn = document.getElementById('mic-btn');
+      const statusEl = document.getElementById('mic-status');
+
+      try {
+        activeRecognition = new SpeechRec();
+        activeRecognition.lang = 'ar-MA';
+        activeRecognition.interimResults = false;
+        activeRecognition.maxAlternatives = 3;
+
+        micBtn.classList.add('mic-recording');
+        statusEl.textContent = 'Ich höre zu... Sprich jetzt!';
+
+        activeRecognition.onresult = (event) => {
+          micBtn.classList.remove('mic-recording');
+          const transcripts = [];
+          for (let i = 0; i < event.results[0].length; i++) {
+            transcripts.push(event.results[0][i].transcript);
+          }
+
+          const bestTranscript = transcripts[0] || '';
+          const heardBox = document.getElementById('speech-heard-box');
+          const heardText = document.getElementById('speech-heard-text');
+          if (heardBox && heardText) {
+            heardText.textContent = bestTranscript;
+            heardBox.classList.remove('hidden');
+          }
+
+          const normTarget = normalizeArabic(step.targetAr);
+          const targetTokens = normTarget.split(' ').filter(Boolean);
+
+          // Forgiving check: match if full normalized string matches or >= 50% of key words match
+          const isMatch = transcripts.some(t => {
+            const normHeard = normalizeArabic(t);
+            if (normHeard.includes(normTarget) || normTarget.includes(normHeard)) return true;
+            const matchedTokens = targetTokens.filter(tok => normHeard.includes(tok));
+            return targetTokens.length > 0 && (matchedTokens.length / targetTokens.length) >= 0.5;
+          });
+
+          activeSession.stepAnswered = true;
+          if (isMatch) activeSession.correctCount++;
+
+          showStepFeedback(
+            isMatch,
+            isMatch
+              ? 'Klasse ausgesprochen! Deine Aussprache wurde klar erkannt.'
+              : 'Fast! Automatische Spracherkennung ist bei Dialekten manchmal streng – hör dir den Satz gerne noch einmal an oder gehe weiter.'
+          );
+        };
+
+        activeRecognition.onerror = (e) => {
+          micBtn.classList.remove('mic-recording');
+          statusEl.textContent = e.error === 'not-allowed'
+            ? 'Mikrofonzugriff wurde blockiert. Du kannst die Übung einfach überspringen.'
+            : 'Nichts erkannt – versuche es gerne noch einmal oder überspringe den Schritt.';
+        };
+
+        activeRecognition.onend = () => {
+          micBtn.classList.remove('mic-recording');
+        };
+
+        activeRecognition.start();
+      } catch (err) {
+        statusEl.textContent = 'Spracheingabe konnte nicht gestartet werden. Bitte überspringe diesen Schritt.';
+      }
+    }
+
+    function skipSpeakingStep() {
+      if (activeRecognition) {
+        try { activeRecognition.abort(); } catch (e) {}
+      }
+      // Do not penalize quizTotal when skipped
+      if (activeSession && activeSession.quizTotal > 0) {
+        activeSession.quizTotal = Math.max(1, activeSession.quizTotal - 1);
+      }
+      advanceStep(false);
+    }
+
+    function showStepFeedback(isCorrect, messageHtml) {
+      const fb = document.getElementById('step-feedback');
+      if (!fb) return;
+      fb.classList.remove('hidden');
+      fb.className = `mt-5 p-4 rounded-2xl border ${
+        isCorrect
+          ? 'bg-zellige-50 border-zellige-200 text-zellige-800'
+          : 'bg-terracotta-50 border-terracotta-200 text-terracotta-800'
+      } animate-step`;
+
+      fb.innerHTML = `
+        <div class="flex items-start gap-3 mb-3">
+          <span class="text-xl">${isCorrect ? '🎉' : '💡'}</span>
+          <div class="text-sm leading-relaxed">
+            <p class="font-bold mb-0.5">${isCorrect ? 'Richtig!' : 'Hinweis:'}</p>
+            <div>${messageHtml}</div>
+          </div>
+        </div>
+        <button type="button" onclick="advanceStep(false)"
+          class="w-full py-3 rounded-xl font-bold text-sm text-white transition-colors cursor-pointer ${
+            isCorrect ? 'bg-zellige-600 hover:bg-zellige-700' : 'bg-terracotta-600 hover:bg-terracotta-700'
+          }">
+          Weiter →
+        </button>
+      `;
+    }
+
+    function advanceStep() {
+      activeSession.currentIndex++;
+      activeSession.stepAnswered = false;
+      activeSession.builderSelection = [];
+      activeSession.shuffledWords = null;
+      renderSessionStep();
+    }
+
+    /**
+     * ============================================================================
+     * 8. SESSION COMPLETION SCREEN
+     * ============================================================================
+     */
+    function renderSessionComplete() {
+      const main = document.getElementById('app-main');
+      const s = activeSession;
+      const scorePct = s.quizTotal > 0 ? Math.round((s.correctCount / s.quizTotal) * 100) : 100;
+
+      // Save progress
+      let earnedXp = 25;
+      let passedQuiz = true;
+
+      if (s.mode === 'lesson') {
+        if (!appState.completedLessons.includes(s.lessonId)) {
+          appState.completedLessons.push(s.lessonId);
+          earnedXp = 40;
+        }
+        s.phraseIds.forEach(pid => {
+          if (!appState.masteredPhrases.includes(pid)) {
+            appState.masteredPhrases.push(pid);
+          }
+        });
+      } else if (s.mode === 'daily') {
+        appState.dailyCompletedDate = getTodayISO();
+        earnedXp = 50;
+        s.phraseIds.forEach(pid => {
+          if (!appState.masteredPhrases.includes(pid)) {
+            appState.masteredPhrases.push(pid);
+          }
+        });
+      } else if (s.mode === 'quiz') {
+        passedQuiz = scorePct >= 70;
+        if (passedQuiz && !appState.completedQuizzes.includes(s.chapterId)) {
+          appState.completedQuizzes.push(s.chapterId);
+          earnedXp = 80;
+        } else {
+          earnedXp = 20;
+        }
+      }
+
+      recordDailyActivity(earnedXp);
+
+      main.innerHTML = `
+        <div class="max-w-lg mx-auto bg-white rounded-3xl border border-sand-200 shadow-md p-8 text-center animate-step">
+          <div class="w-20 h-20 rounded-3xl ${passedQuiz ? 'bg-saffron-100 text-saffron-600' : 'bg-terracotta-100 text-terracotta-600'} flex items-center justify-center text-4xl mx-auto mb-5">
+            ${s.mode === 'quiz' ? (passedQuiz ? '🏆' : '💪') : '🎉'}
+          </div>
+
+          <h2 class="font-display text-2xl sm:text-3xl font-extrabold text-slate-800 mb-2">
+            ${
+              s.mode === 'quiz'
+                ? (passedQuiz ? 'Kapitel-Test bestanden!' : 'Guter Versuch – gleich nochmal?')
+                : 'B-se77a! Einheit abgeschlossen!'
+            }
+          </h2>
+          <p class="text-sm text-slate-500 mb-6">
+            ${s.title}
+          </p>
+
+          <div class="grid grid-cols-3 gap-3 bg-sand-50 border border-sand-200 rounded-2xl p-4 mb-6">
+            <div>
+              <p class="text-xs text-slate-500">Trefferquote</p>
+              <p class="font-display text-xl font-extrabold text-zellige-700">${scorePct}%</p>
+            </div>
+            <div>
+              <p class="text-xs text-slate-500">Verdiente XP</p>
+              <p class="font-display text-xl font-extrabold text-saffron-600">+${earnedXp}</p>
+            </div>
+            <div>
+              <p class="text-xs text-slate-500">Tages-Streak</p>
+              <p class="font-display text-xl font-extrabold text-terracotta-600">🔥 ${appState.streak}</p>
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            ${
+              s.mode === 'quiz' && !passedQuiz
+                ? `<button onclick="startChapterQuiz('${s.chapterId}')" class="w-full py-3.5 rounded-2xl bg-terracotta-600 hover:bg-terracotta-700 text-white font-bold cursor-pointer">Test noch einmal starten</button>`
+                : ''
+            }
+            ${
+              s.chapterId
+                ? `<button onclick="openSummaryModal('${s.chapterId}')" class="w-full py-3 rounded-2xl bg-sand-100 hover:bg-sand-200 text-slate-800 font-semibold text-sm cursor-pointer">📋 Kapitel-Spickzettel ansehen</button>`
+                : ''
+            }
+            <button onclick="goHome()"
+              class="w-full py-3.5 rounded-2xl bg-zellige-600 hover:bg-zellige-700 text-white font-bold shadow-xs cursor-pointer">
+              Zurück zur Übersicht
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    /**
+     * ============================================================================
+     * 9. MODALS: KAPITEL-ZUSAMMENFASSUNG (SPICKZETTEL) & KAPITEL ERWEITERN
+     * ============================================================================
+     */
+    function openModal(innerHtml) {
+      const backdrop = document.getElementById('modal-backdrop');
+      const content = document.getElementById('modal-content');
+      content.innerHTML = innerHtml;
+      backdrop.classList.remove('hidden');
+      backdrop.classList.add('flex');
+    }
+
+    function closeModal() {
+      const backdrop = document.getElementById('modal-backdrop');
+      backdrop.classList.add('hidden');
+      backdrop.classList.remove('flex');
+    }
+
+    // Close modal when clicking backdrop
+    document.getElementById('modal-backdrop').addEventListener('click', (e) => {
+      if (e.target.id === 'modal-backdrop') closeModal();
+    });
+
+    function openSummaryModal(chapterId) {
+      const chapter = getAllChapters().find(c => c.id === chapterId);
+      if (!chapter) return;
+
+      const allPhrases = chapter.lessons.flatMap(l => l.phrases);
+      const tips = (chapter.summary && chapter.summary.grammarTips) || [];
+
+      openModal(`
+        <div class="flex items-start justify-between gap-4 mb-5">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-terracotta-600">Kapitel ${chapter.number} • Spickzettel</span>
+            <h2 class="font-display text-2xl font-extrabold text-slate-800 mt-0.5">${chapter.title}</h2>
+          </div>
+          <button onclick="closeModal()" class="w-9 h-9 rounded-xl bg-sand-100 hover:bg-sand-200 flex items-center justify-center font-bold text-slate-600 cursor-pointer">✕</button>
+        </div>
+
+        <!-- Grammar & Culture Tips -->
+        ${tips.length > 0 ? `
+          <div class="mb-6">
+            <h3 class="font-display text-sm font-bold uppercase tracking-wider text-zellige-700 mb-3">💡 Grammatik &amp; Kultur-Tipps</h3>
+            <div class="space-y-3">
+              ${tips.map(t => `
+                <div class="bg-saffron-50/80 border border-saffron-200 rounded-2xl p-4">
+                  <p class="font-bold text-sm text-slate-800 mb-1">${t.title}</p>
+                  <p class="text-xs sm:text-sm text-slate-700 leading-relaxed">${t.text}</p>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        ` : ''}
+
+        <!-- Vocabulary List -->
+        <div>
+          <h3 class="font-display text-sm font-bold uppercase tracking-wider text-zellige-700 mb-3">📚 Wichtigste Ausdrücke (${allPhrases.length})</h3>
+          <div class="divide-y divide-sand-200 border border-sand-200 rounded-2xl overflow-hidden">
+            ${allPhrases.map(p => `
+              <div class="p-3.5 sm:p-4 bg-white hover:bg-sand-50/70 flex items-center justify-between gap-3">
+                <div class="flex-1">
+                  <p class="arabic-text text-lg sm:text-xl font-bold text-slate-900">${p.ar}</p>
+                  ${appState.showTransliteration ? `<p class="text-xs text-terracotta-600 font-semibold">${p.tr}</p>` : ''}
+                  <p class="text-sm text-slate-700 mt-0.5">${p.de}</p>
+                </div>
+                <button type="button" onclick="speakDarija('${escapeQuotes(p.ar)}', 0.9)"
+                  class="w-10 h-10 rounded-xl bg-zellige-50 hover:bg-zellige-100 text-zellige-700 flex items-center justify-center shrink-0 cursor-pointer" title="Anhören">
+                  🔊
+                </button>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <div class="mt-6 flex flex-wrap items-center justify-end gap-3">
+          <button onclick="closeModal()" class="px-4 py-2.5 rounded-xl bg-sand-100 hover:bg-sand-200 text-slate-700 text-sm font-semibold cursor-pointer">Schließen</button>
+          <button onclick="closeModal(); startChapterQuiz('${chapter.id}')" class="px-5 py-2.5 rounded-xl bg-terracotta-600 hover:bg-terracotta-700 text-white text-sm font-bold cursor-pointer">🏆 Abschluss-Test starten</button>
+        </div>
+      `);
+    }
+
+    function openExtendModal() {
+      const sampleTemplate = JSON.stringify([
+        {
+          id: "kapitel-6",
+          number: getAllChapters().length + 1,
+          title: "Im Café & Restaurant",
+          subtitle: "Kaffee, Tajine & Couscous bestellen und die Rechnung verlangen",
+          icon: "☕",
+          lessons: [
+            {
+              id: "k6-l1",
+              title: "Kaffee & Getränke bestellen",
+              duration: "5 Min.",
+              phrases: [
+                {
+                  id: "p6_1",
+                  ar: "عافاك بغيت قهوة نص نص",
+                  tr: "3afak bghit 9ehwa ness-ness",
+                  de: "Ich möchte bitte einen Milchkaffee (halb Kaffee, halb Milch)",
+                  note: "'9ehwa ness-ness' ist der absolute Klassiker in marokkanischen Cafés!"
+                }
+              ],
+              exercises: [
+                {
+                  type: "choice",
+                  prompt: "Wie bestellst du einen typischen marokkanischen Milchkaffee?",
+                  options: [
+                    { ar: "بغيت قهوة نص نص", tr: "Bghit 9ehwa ness-ness", correct: true },
+                    { ar: "بغيت كاس د أتاي", tr: "Bghit kas d-atay", correct: false }
+                  ],
+                  explanation: "'Ness-ness' bedeutet 'halb-halb' (halb Espresso, halb heiße Milch)."
+                }
+              ]
+            }
+          ],
+          summary: {
+            grammarTips: [
+              {
+                title: "Kaffee-Kultur in Marokko",
+                text: "<strong>9ehwa ka7la</strong> = schwarzer Kaffee, <strong>9ehwa ness-ness</strong> = Milchkaffee, <strong>9ehwa b-l7lib</strong> = Kaffee mit viel Milch."
+              }
+            ]
+          },
+          chapterQuiz: [
+            {
+              type: "choice",
+              prompt: "Was ist eine „9ehwa ness-ness“?",
+              options: [
+                { ar: "قهوة نص نص", tr: "Milchkaffee (halb Kaffee, halb Milch)", correct: true },
+                { ar: "قهوة نص نص", tr: "Minztee ohne Zucker", correct: false }
+              ],
+              explanation: "'Ness-ness' = halb-halb."
+            }
+          ]
+        }
+      ], null, 2);
+
+      openModal(`
+        <div class="flex items-start justify-between gap-4 mb-4">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-zellige-700">Erweitern &amp; Datensicherung</span>
+            <h2 class="font-display text-2xl font-extrabold text-slate-800 mt-0.5">Neue Kapitel hinzufügen</h2>
+          </div>
+          <button onclick="closeModal()" class="w-9 h-9 rounded-xl bg-sand-100 hover:bg-sand-200 flex items-center justify-center font-bold text-slate-600 cursor-pointer">✕</button>
+        </div>
+
+        <p class="text-sm text-slate-600 leading-relaxed mb-4">
+          Deine App ist modular aufgebaut: Wenn du mit Kapitel 5 fertig bist, kannst du mir einfach sagen, welche Themen du als Nächstes lernen möchtest. Ich erstelle dir dann neue Kapitel im passenden Format, die du hier mit einem Klick einfügst – <strong>dein bisheriger Lernstand bleibt dabei komplett erhalten!</strong>
+        </p>
+
+        <!-- Import JSON Area -->
+        <div class="mb-5">
+          <div class="flex items-center justify-between mb-1.5">
+            <label for="chapter-json-input" class="text-xs font-bold uppercase tracking-wider text-slate-700">
+              Kapitel-JSON einfügen:
+            </label>
+            <button type="button" onclick="loadSampleIntoTextarea()"
+              class="text-xs font-semibold text-zellige-700 hover:underline cursor-pointer">
+              Beispiel-Kapitel 6 zum Testen einfügen
+            </button>
+          </div>
+          <textarea id="chapter-json-input" rows="6"
+            placeholder='Füge hier das JSON für neue Kapitel ein (z. B. [ { "id": "kapitel-6", ... } ])'
+            class="w-full rounded-2xl border border-sand-300 bg-sand-50 p-3.5 text-xs font-mono text-slate-800 focus:outline-none focus:border-zellige-600"></textarea>
+
+          <div class="flex flex-wrap items-center gap-2 mt-3">
+            <button type="button" onclick="importChaptersFromInput()"
+              class="px-5 py-2.5 rounded-xl bg-zellige-600 hover:bg-zellige-700 text-white text-sm font-bold cursor-pointer">
+              ➕ Kapitel jetzt hinzufügen
+            </button>
+            <button type="button" onclick="copyTemplateJson()"
+              class="px-4 py-2.5 rounded-xl bg-sand-100 hover:bg-sand-200 text-slate-700 text-xs sm:text-sm font-semibold cursor-pointer">
+              📋 JSON-Struktur kopieren
+            </button>
+          </div>
+        </div>
+
+        <!-- Backup & Restore Section -->
+        <div class="pt-5 border-t border-sand-200">
+          <h3 class="font-display text-sm font-bold text-slate-800 mb-2">💾 Lernstand sichern &amp; wiederherstellen</h3>
+          <p class="text-xs text-slate-500 mb-3">
+            Sichere deinen Fortschritt inklusive eigener Kapitel als Text-Code, falls du das Gerät wechselst.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <button type="button" onclick="exportProgressBackup()"
+              class="px-4 py-2 rounded-xl bg-saffron-50 hover:bg-saffron-100 text-saffron-600 border border-saffron-200 text-xs font-bold cursor-pointer">
+              📤 Fortschritt kopieren
+            </button>
+            ${
+              (appState.customChapters && appState.customChapters.length > 0)
+                ? `<button type="button" onclick="removeCustomChapters()" class="px-4 py-2 rounded-xl bg-terracotta-50 hover:bg-terracotta-100 text-terracotta-700 text-xs font-semibold cursor-pointer">🗑️ Importierte Zusatz-Kapitel entfernen (${appState.customChapters.length})</button>`
+                : ''
+            }
+          </div>
+        </div>
+
+        <textarea id="hidden-template-store" class="hidden">${sampleTemplate}</textarea>
+      `);
+    }
+
+    function loadSampleIntoTextarea() {
+      const tpl = document.getElementById('hidden-template-store').value;
+      document.getElementById('chapter-json-input').value = tpl;
+    }
+
+    function copyTemplateJson() {
+      const tpl = document.getElementById('hidden-template-store').value;
+      copyTextToClipboard(tpl, 'Kapitel-Vorlage in die Zwischenablage kopiert!');
+    }
+
+    function importChaptersFromInput() {
+      const raw = document.getElementById('chapter-json-input').value.trim();
+      if (!raw) {
+        showToast('Bitte füge zuerst einen JSON-Code für neue Kapitel ein.', 'warning');
+        return;
+      }
+
+      try {
+        let parsed = JSON.parse(raw);
+        if (!Array.isArray(parsed)) {
+          parsed = [parsed];
+        }
+
+        // Validate minimal schema
+        const validChapters = parsed.filter(ch => ch && ch.id && ch.title && Array.isArray(ch.lessons));
+        if (validChapters.length === 0) {
+          showToast('Ungültiges Format: Ein Kapitel benötigt mindestens id, title und lessons.', 'warning');
+          return;
+        }
+
+        const existingIds = new Set(getAllChapters().map(c => c.id));
+        let addedCount = 0;
+
+        validChapters.forEach(ch => {
+          if (!existingIds.has(ch.id)) {
+            ch.number = getAllChapters().length + 1;
+            appState.customChapters.push(ch);
+            existingIds.add(ch.id);
+            addedCount++;
+          }
+        });
+
+        if (addedCount === 0) {
+          showToast('Diese Kapitel-ID existiert bereits in deiner App.', 'info');
+          return;
+        }
+
+        saveState();
+        closeModal();
+        renderDashboard();
+        showToast(`${addedCount} neue(s) Kapitel erfolgreich hinzugefügt!`, 'success');
+      } catch (err) {
+        showToast('Fehler beim Lesen des JSON-Textes. Bitte prüfe die Klammern und Anführungszeichen.', 'warning');
+      }
+    }
+
+    function removeCustomChapters() {
+      appState.customChapters = [];
+      saveState();
+      closeModal();
+      renderDashboard();
+      showToast('Importierte Zusatz-Kapitel wurden entfernt.', 'info');
+    }
+
+    function exportProgressBackup() {
+      const backupJson = JSON.stringify(appState);
+      copyTextToClipboard(backupJson, 'Dein kompletter Lernstand wurde in die Zwischenablage kopiert!');
+    }
+
+    function escapeQuotes(str) {
+      return String(str).replace(/'/g, "\\'").replace(/"/g, '&quot;');
+    }
+
+    /**
+     * ============================================================================
+     * 10. INITIALIZATION
+     * ============================================================================
+     */
+    window.addEventListener('DOMContentLoaded', () => {
+      initVoices();
+      updateHeaderStats();
+      updateTranslitButton();
+      renderDashboard();
+    });
+  </script>
+</body>
+</html>
